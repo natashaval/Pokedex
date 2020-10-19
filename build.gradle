@@ -21,6 +21,7 @@ buildscript {
         timber = "4.7.1"
         rxbinding = "4.0.0"
         hilt_viewmodel = "1.0.0-alpha02"
+        glide = "4.11.0"
     }
 }
 

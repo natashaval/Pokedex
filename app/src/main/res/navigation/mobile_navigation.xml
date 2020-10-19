@@ -22,4 +22,8 @@
         android:name="com.natashaval.pokedex.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/action_settings"
+        android:name="com.natashaval.pokedex.ui.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
