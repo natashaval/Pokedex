@@ -9,8 +9,6 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class BerryFirmness(
-    @SerializedName("id")
-    val id: Integer? = null,
-    @SerializedName("name")
-    val name: String? = null
+    @SerializedName("id") val id: Integer? = null,
+    @SerializedName("name") val name: String? = null
 ) : Parcelable

@@ -1,5 +1,6 @@
 package com.natashaval.pokedex.di
 
+import com.natashaval.pokedex.api.ItemApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,4 +13,8 @@ import retrofit2.Retrofit
 @Module
 @InstallIn(ActivityRetainedComponent::class)
 class ApiModule {
+    @Provides
+    fun provideItemApi(retrofit: Retrofit): ItemApi {
+        return retrofit.create(ItemApi::class.java)
+    }
 }

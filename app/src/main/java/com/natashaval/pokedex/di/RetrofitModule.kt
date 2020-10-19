@@ -18,28 +18,29 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 class RetrofitModule {
-  @Provides
-  @Singleton
-  fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
-    return Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create(gson)).build()
-  }
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
+        return Retrofit.Builder().baseUrl(BASE_URL).client(okHttpClient).addConverterFactory(
+          GsonConverterFactory.create(gson)
+        ).build()
+    }
 
-  @Provides
-  @Singleton
-  fun provideOkHttpClient(): OkHttpClient {
-    return OkHttpClient.Builder().addInterceptor(
-        HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        .build()
-  }
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(
+          HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        ).build()
+    }
 
-  @Provides
-  @Singleton
-  fun provideGson(): Gson {
-    return GsonBuilder().create()
-  }
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return GsonBuilder().create()
+    }
 
-  companion object {
-    private const val BASE_URL = "https://pokeapi.co/api/v2"
-  }
+    companion object {
+        private const val BASE_URL = "https://pokeapi.co/api/v2/"
+    }
 }
