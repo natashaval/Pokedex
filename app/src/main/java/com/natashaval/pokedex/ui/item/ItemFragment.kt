@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.natashaval.pokedex.databinding.FragmentItemBinding
 import com.natashaval.pokedex.model.MyResponse
 import com.natashaval.pokedex.model.Status
+import com.natashaval.pokedex.model.item.Item
 import com.natashaval.pokedex.utils.hideView
 import com.natashaval.pokedex.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +23,7 @@ class ItemFragment : Fragment() {
   private var _binding: FragmentItemBinding? = null
   private val binding get() = _binding!!
   private val itemViewModel: ItemViewModel by viewModels()
+  private lateinit var itemAdapter: ItemAdapter
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?): View? {
@@ -45,13 +48,28 @@ class ItemFragment : Fragment() {
         Status.SUCCESS -> {
           binding.pbItem.hideView()
           val data = it.data
-          data?.forEach {
-            Timber.d("Logging item name: ${it.name}")
+          data?.let { itemList ->
+            Timber.d("Logging itemList: ${itemList.size}")
+            setReyclerView(itemList)
+            itemList.forEach {item ->
+              Timber.d("Logging item name: ${item.name}")
+            }
           }
         }
-        Status.FAILED, Status.ERROR -> binding.pbItem.hideView()
+        Status.FAILED, Status.ERROR -> {
+          binding.pbItem.hideView()
+          Timber.e("Logging itemList error!")
+        }
         Status.LOADING -> binding.pbItem.showView()
       }
     })
+  }
+
+  private fun setReyclerView(items: List<Item>) {
+    itemAdapter = ItemAdapter(items)
+    binding.rvItem.apply {
+      layoutManager = LinearLayoutManager(activity)
+      adapter = itemAdapter
+    }
   }
 }
