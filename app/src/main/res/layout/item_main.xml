@@ -31,6 +31,7 @@
             android:textStyle="bold"
             android:layout_marginStart="@dimen/margin_12"
             android:layout_marginBottom="@dimen/margin_4"
+            android:layout_marginEnd="@dimen/margin_8"
             app:layout_constraintTop_toTopOf="@id/iv_icon"
             app:layout_constraintBottom_toTopOf="@id/tv_description"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,12 +39,14 @@
 
         <TextView
             android:id="@+id/tv_description"
-            style="@style/TextAppearance.MaterialComponents.Caption"
+            style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Description"
+            android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintBottom_toBottomOf="@id/iv_icon"
-            app:layout_constraintEnd_toStartOf="@id/iv_icon"
+            app:layout_constraintEnd_toEndOf="@id/tv_title"
             app:layout_constraintStart_toStartOf="@id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
