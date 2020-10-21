@@ -10,7 +10,8 @@
     <!-- Menu -->
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_nature">Nature Dex</string>
+    <string name="menu_item">Item Dex</string>
     <!-- Fab -->
     <string name="fab_search">Search</string>
     <string name="fab_web">Open Web</string>
@@ -29,4 +30,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="flavor_like">Like %s flavor</string>
+    <string name="flavor_hate">Hate %s flavor</string>
 </resources>

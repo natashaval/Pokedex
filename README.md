@@ -11,3 +11,5 @@ dynamic url = https://futurestud.io/tutorials/retrofit-2-how-to-use-dynamic-urls
 
 RecyclerView:
 https://medium.com/@info.anikdey003/kotlin-recyclerview-in-a-proper-and-re-usable-way-bb14717daa93
+https://www.codepolitan.com/cara-membuat-pagination-atau-load-more-menggunakan-recyclerview-part-1-59c689b1b2e76
+https://androidwave.com/pagination-in-recyclerview/

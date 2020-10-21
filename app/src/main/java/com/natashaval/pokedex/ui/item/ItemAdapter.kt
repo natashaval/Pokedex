@@ -12,7 +12,7 @@ import com.natashaval.pokedex.model.item.Item
 /**
  * Created by natasha.santoso on 20/10/20.
  */
-class ItemAdapter(private val item: List<Item>) :
+class ItemAdapter(private val itemList: List<Item>) :
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
     val view = LayoutInflater.from(parent.context).inflate(R.layout.item_main, parent, false)
@@ -20,10 +20,10 @@ class ItemAdapter(private val item: List<Item>) :
   }
 
   override fun onBindViewHolder(viewHolder: ItemViewHolder, position: Int) {
-    viewHolder.bind(item[position])
+    viewHolder.bind(itemList[position])
   }
 
-  override fun getItemCount(): Int = item.size
+  override fun getItemCount(): Int = itemList.size
 
   inner class ItemViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val view = v
