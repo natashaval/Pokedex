@@ -2,6 +2,7 @@ package com.natashaval.pokedex.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.natashaval.pokedex.utils.Constant.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,9 +39,5 @@ class RetrofitModule {
     @Singleton
     fun provideGson(): Gson {
         return GsonBuilder().create()
-    }
-
-    companion object {
-        private const val BASE_URL = "https://pokeapi.co/api/v2/"
     }
 }

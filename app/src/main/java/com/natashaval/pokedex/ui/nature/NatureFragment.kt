@@ -11,24 +11,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentNatureBinding
 import com.natashaval.pokedex.model.Status
+import com.natashaval.pokedex.model.nature.Nature
 import com.natashaval.pokedex.ui.adapter.PaginationListener
 import com.natashaval.pokedex.utils.hideView
 import com.natashaval.pokedex.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
-@AndroidEntryPoint
-class NatureFragment : Fragment() {
+@AndroidEntryPoint class NatureFragment : Fragment() {
   private var _binding: FragmentNatureBinding? = null
   private val binding get() = _binding!!
   private val viewModel: NatureViewModel by viewModels()
 
   private lateinit var mAdapter: NatureAdapter
-  private var currentPage = PaginationListener.PAGE_START
+  private var currentPage = NatureViewModel.NATURE_OFFSET
   private var isLastPage = false
-  private var totalPage = PaginationListener.PAGE_SIZE
+  private var totalPage = 0
   private var isLoading = false
-  private var itemCount = 0
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?): View? {
@@ -46,7 +45,7 @@ class NatureFragment : Fragment() {
       mAdapter = NatureAdapter(mutableListOf())
       layoutManager = mLayoutManager
       adapter = mAdapter
-      addOnScrollListener(object: PaginationListener(mLayoutManager) {
+      addOnScrollListener(object : PaginationListener(mLayoutManager, NatureViewModel.NATURE_LIMIT) {
         override fun isLoading(): Boolean {
           return isLoading
         }
@@ -57,10 +56,9 @@ class NatureFragment : Fragment() {
 
         override fun loadMoreItems() {
           isLoading = true
-          currentPage++
-          viewModel.getNatureList(currentPage, 10)
+          currentPage += NatureViewModel.NATURE_LIMIT
+          viewModel.getNatureList(currentPage, NatureViewModel.NATURE_LIMIT)
         }
-
       })
     }
   }
@@ -71,18 +69,20 @@ class NatureFragment : Fragment() {
   }
 
   private fun getNatureList() {
-    viewModel.getNatureList(0,10)
+    viewModel.getNatureList(0, NatureViewModel.NATURE_LIMIT)
     viewModel.natureResource.observe(viewLifecycleOwner, {
       val data = it.data
+      totalPage = data?.count ?: 0
       Timber.d("Logging natureResource next: ${data?.next} previous: ${data?.previous}")
     })
 
     viewModel.natureList.observe(viewLifecycleOwner, {
-      when(it.status) {
+      when (it.status) {
         Status.SUCCESS -> {
           binding.pbNature.hideView()
           val data = it.data
-          data?.let {natureList ->
+          addToAdapter(data)
+          data?.let { natureList ->
             Timber.d("Logging natureList: ${natureList.size}")
             natureList.forEach { nature ->
               Timber.d("Logging nature name: ${nature.name}")
@@ -98,9 +98,16 @@ class NatureFragment : Fragment() {
     })
   }
 
-  private fun addToAdapter() {
+  private fun addToAdapter(list: MutableList<Nature>?) {
     Handler().postDelayed({
       if (currentPage != PaginationListener.PAGE_START) mAdapter.removeLoading()
+      list?.let { mAdapter.addItems(list) }
+      if (currentPage < totalPage) {
+        mAdapter.addLoading()
+      } else {
+        isLastPage = true
+      }
+      isLoading = false
     }, 1500)
   }
 

@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class Resource(
-    @SerializedName("count") val count: Integer? = null,
+    @SerializedName("count") val count: Int? = null,
     @SerializedName("next") val next: String? = null,
     @SerializedName("previous") val previous: String? = null,
     @SerializedName("results") val results: List<NamedApiResource>? = null

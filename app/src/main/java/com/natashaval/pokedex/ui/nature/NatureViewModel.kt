@@ -9,6 +9,7 @@ import com.natashaval.pokedex.model.MyResponse
 import com.natashaval.pokedex.model.Resource
 import com.natashaval.pokedex.model.nature.Nature
 import com.natashaval.pokedex.repository.NatureRepository
+import com.natashaval.pokedex.utils.Constant.Companion.BASE_URL
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class NatureViewModel @ViewModelInject constructor(private val repository: Natur
   private val _natureList = MutableLiveData<MyResponse<MutableList<Nature>>>(MyResponse.loading())
   val natureList: LiveData<MyResponse<MutableList<Nature>>> get() = _natureList
 
-  fun getNatureList(offset: Int?, limit: Int? = 10) {
+  fun getNatureList(offset: Int?, limit: Int? = NATURE_LIMIT) {
     CoroutineScope(Dispatchers.IO).launch {
       val response = repository.getNatureList(buildUrl(offset, limit))
       _natureResource.postValue(response)
@@ -39,9 +40,15 @@ class NatureViewModel @ViewModelInject constructor(private val repository: Natur
   }
 
   private fun buildUrl(offset: Int?, limit: Int?): String? {
-    return Uri.Builder().appendPath("nature")
-        .appendQueryParameter("offset", offset.toString())
-        .appendQueryParameter("limit", limit.toString())
-        .build().toString()
+    return Uri.parse(BASE_URL).buildUpon()
+      .appendPath("nature")
+      .appendQueryParameter("offset", offset.toString())
+      .appendQueryParameter("limit", limit.toString())
+      .build().toString()
+  }
+
+  companion object {
+    const val NATURE_OFFSET = 0
+    const val NATURE_LIMIT = 5
   }
 }

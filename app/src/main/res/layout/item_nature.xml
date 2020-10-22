@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
-    app:strokeWidth="1dp"
+    app:cardElevation="2dp"
     android:layout_marginHorizontal="@dimen/margin_8"
     android:layout_marginVertical="@dimen/margin_4">
 
@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/tv_name"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Nature Title"
@@ -31,6 +31,7 @@
             android:background="@color/greyLight"
             android:text="Like Berry"
             android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/tv_increase"
             app:layout_constraintEnd_toStartOf="@id/guideline"
             app:layout_constraintStart_toStartOf="@id/tv_name"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -39,10 +40,11 @@
             android:id="@+id/tv_berry_hate"
             style="@style/TextAppearance.MaterialComponents.Caption"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/greyLight"
             android:text="Hate Berry"
             android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@id/tv_decrease"
             app:layout_constraintEnd_toEndOf="@id/tv_name"
             app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
@@ -53,9 +55,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/redLight"
-            android:text="Attack"
+            android:text="special-attack"
             android:textAlignment="center"
-            android:textSize="@dimen/text_12"
             android:drawableLeft="@drawable/ic_double_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/guideline"
@@ -66,16 +67,15 @@
             android:id="@+id/tv_decrease"
             style="@style/TextAppearance.MaterialComponents.Body2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/blueLight"
-            android:text="Defense"
+            android:text="special-defense"
             android:textAlignment="center"
-            android:textSize="@dimen/text_12"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:drawableRight="@drawable/ic_double_down"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_name"
             app:layout_constraintStart_toEndOf="@id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/tv_berry_hate" />
+            app:layout_constraintTop_toTopOf="@id/tv_increase" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
