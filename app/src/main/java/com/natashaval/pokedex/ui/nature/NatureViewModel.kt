@@ -21,9 +21,9 @@ class NatureViewModel @ViewModelInject constructor(private val repository: Natur
   private val _natureList = MutableLiveData<MyResponse<MutableList<Nature>>>(MyResponse.loading())
   val natureList: LiveData<MyResponse<MutableList<Nature>>> get() = _natureList
 
-  fun getNatureList() {
+  fun getNatureList(offset: Int?, limit: Int? = 10) {
     CoroutineScope(Dispatchers.IO).launch {
-      val response = repository.getNatureList(NATURE_BASE_URL)
+      val response = repository.getNatureList(buildUrl(offset, limit))
       _natureResource.postValue(response)
 
       val list = mutableListOf<Nature>()
@@ -38,7 +38,10 @@ class NatureViewModel @ViewModelInject constructor(private val repository: Natur
     }
   }
 
-  companion object {
-    private const val NATURE_BASE_URL = "nature?offset=0&limit=10"
+  private fun buildUrl(offset: Int?, limit: Int?): String? {
+    return Uri.Builder().appendPath("nature")
+        .appendQueryParameter("offset", offset.toString())
+        .appendQueryParameter("limit", limit.toString())
+        .build().toString()
   }
 }

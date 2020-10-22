@@ -68,6 +68,7 @@ class ItemFragment : Fragment() {
   private fun setReyclerView(items: List<Item>) {
     itemAdapter = ItemAdapter(items)
     binding.rvItem.apply {
+      setHasFixedSize(true)
       layoutManager = LinearLayoutManager(activity)
       adapter = itemAdapter
     }
