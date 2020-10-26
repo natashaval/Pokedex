@@ -16,7 +16,7 @@
             android:id="@+id/iv_icon"
             android:layout_width="@dimen/icon_size"
             android:layout_height="@dimen/icon_size"
-            tools:src="@drawable/ic_menu_gallery"
+            tools:src="@drawable/ic_pill"
             android:layout_margin="@dimen/margin_12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

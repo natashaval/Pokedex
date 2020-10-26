@@ -39,7 +39,7 @@ import timber.log.Timber
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     appBarConfiguration = AppBarConfiguration(
-        setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_nature, R.id.nav_item), drawerLayout)
+        setOf(R.id.nav_home, R.id.nav_pokemon, R.id.nav_nature, R.id.nav_item), drawerLayout)
     setupActionBarWithNavController(navController, appBarConfiguration)
     navView.setupWithNavController(navController)
   }

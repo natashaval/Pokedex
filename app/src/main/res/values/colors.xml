@@ -7,9 +7,9 @@
     <color name="pokemonRed">#FF0000</color>
     <color name="pokemonYellow">#FFDE00</color>
 
-    <color name="redPrimary">#ff1744</color>
+    <color name="redPrimary">#FF1744</color>
     <color name="redLight">#ff616f</color>
-    <color name="bluePrimary">#00b0ff</color>
+    <color name="bluePrimary">#00B0FF</color>
     <color name="blueLight">#69e2ff</color>
     <color name="greyLight">#eceff1</color>
 

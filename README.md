@@ -14,5 +14,7 @@ https://medium.com/@info.anikdey003/kotlin-recyclerview-in-a-proper-and-re-usabl
 https://www.codepolitan.com/cara-membuat-pagination-atau-load-more-menggunakan-recyclerview-part-1-59c689b1b2e76
 https://androidwave.com/pagination-in-recyclerview/
 
-Pagination:
+Pagination 3.0 (only loadMore, not loadInitial, loadBefore, loadAfter):
+https://developer.android.com/codelabs/android-paging
 https://androidwave.com/android-paging-library/
+https://proandroiddev.com/playing-with-4f21bc67a7f9

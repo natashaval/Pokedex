@@ -2,6 +2,7 @@ package com.natashaval.pokedex.di
 
 import com.natashaval.pokedex.api.ItemApi
 import com.natashaval.pokedex.api.NatureApi
+import com.natashaval.pokedex.api.PokemonApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,5 +21,9 @@ import retrofit2.Retrofit
   @Provides
   fun provideNatureApi(retrofit: Retrofit): NatureApi {
     return retrofit.create(NatureApi::class.java)
+  }
+  @Provides
+  fun providePokemonApi(retrofit: Retrofit): PokemonApi {
+    return retrofit.create(PokemonApi::class.java)
   }
 }

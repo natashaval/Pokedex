@@ -9,7 +9,7 @@
 
     <!-- Menu -->
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_pokemon">Pokemon Dex</string>
     <string name="menu_nature">Nature Dex</string>
     <string name="menu_item">Item Dex</string>
     <!-- Fab -->
