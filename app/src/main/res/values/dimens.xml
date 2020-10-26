@@ -7,6 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="icon_size">48dp</dimen>
+    <dimen name="pokemon_size">64dp</dimen>
     <!-- Margin -->
     <dimen name="margin_4">4dp</dimen>
     <dimen name="margin_8">8dp</dimen>

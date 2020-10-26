@@ -9,15 +9,15 @@ import java.util.concurrent.TimeUnit
  */
 
 fun View.showView() {
-    visibility = View.VISIBLE
+  visibility = View.VISIBLE
 }
 
 fun View.hideView() {
-    visibility = View.GONE
+  visibility = View.GONE
 }
 
 fun View.setSafeClickListener(debounceMillis: Long = 500L, function: () -> Unit) {
-    this.clicks().throttleFirst(debounceMillis, TimeUnit.MILLISECONDS).subscribe {
-        function()
-    }
+  this.clicks().throttleFirst(debounceMillis, TimeUnit.MILLISECONDS).subscribe {
+    function()
+  }
 }

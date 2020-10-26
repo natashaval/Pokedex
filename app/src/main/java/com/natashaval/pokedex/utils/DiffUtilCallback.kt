@@ -8,7 +8,7 @@ import com.natashaval.pokedex.model.NamedApiResource
  */
 class DiffUtilCallback: DiffUtil.ItemCallback<NamedApiResource>() {
   override fun areItemsTheSame(oldItem: NamedApiResource, newItem: NamedApiResource): Boolean {
-    return oldItem.url == newItem.url
+    return oldItem.name == newItem.name
   }
 
   override fun areContentsTheSame(oldItem: NamedApiResource, newItem: NamedApiResource): Boolean {

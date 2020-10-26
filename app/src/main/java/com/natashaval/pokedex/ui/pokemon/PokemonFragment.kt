@@ -40,7 +40,8 @@ class PokemonFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     fetchPokemonPaging()
     with(binding) {
-      rvPokemon.layoutManager = GridLayoutManager(activity, 3)
+      rvPokemon.setHasFixedSize(true)
+      rvPokemon.layoutManager = GridLayoutManager(activity, 4)
       rvPokemon.adapter = adapter
     }
   }

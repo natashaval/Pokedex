@@ -14,15 +14,19 @@ import javax.inject.Inject
  */
 //https://developer.android.com/codelabs/android-paging#4
 class PokemonPagingSource @Inject constructor(private val repository: PokemonRepository) :
-  PagingSource<String, NamedApiResource>() {
-  override suspend fun load(params: LoadParams<String>): LoadResult<String, NamedApiResource> {
+  PagingSource<Int, NamedApiResource>() {
+  override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NamedApiResource> {
+//    https://stackoverflow.com/questions/63418745/paging-3-initial-loading-not-shown
     return try {
-      val response = repository.getPokemonList(buildUrl(PokemonViewModel.POKEMON_OFFSET, PokemonViewModel.POKEMON_LIMIT))
+      val currentPage = params.key ?: 0
+      val offset = currentPage * PokemonViewModel.POKEMON_LIMIT
+
+      val response = repository.getPokemonList(offset, PokemonViewModel.POKEMON_LIMIT)
       val resource = response.data?.results
       LoadResult.Page(
         data = resource ?: listOf(),
-        prevKey = response.data?.previous,
-        nextKey = response.data?.next
+        prevKey = null,
+        nextKey = if (response.data?.next == null) null else currentPage + 1
       )
     } catch (exception: IOException) {
       return LoadResult.Error(exception)

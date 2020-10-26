@@ -13,6 +13,7 @@ import com.natashaval.pokedex.ui.pokemon.PokemonViewModel
 import com.natashaval.pokedex.utils.Constant
 import com.natashaval.pokedex.utils.ResponseUtils
 import kotlinx.coroutines.flow.Flow
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -20,12 +21,8 @@ import javax.inject.Inject
  */
 //https://www.raywenderlich.com/12244218-paging-library-for-android-with-kotlin-creating-infinite-lists
 class PokemonRepository @Inject constructor(private val pokemonApi: PokemonApi) {
-  //  suspend fun getPokemonList(offset: Int?, limit: Int?): MyResponse<Resource> {
-//    val response = pokemonApi.getPokemonList(buildUrl(offset, limit))
-//    return ResponseUtils.convert(response)
-//  }
-  suspend fun getPokemonList(url: String?): MyResponse<Resource> {
-    val response = pokemonApi.getPokemonList(url)
+    suspend fun getPokemonList(offset: Int?, limit: Int?): MyResponse<Resource> {
+    val response = pokemonApi.getPokemonList(buildUrl(offset, limit))
     return ResponseUtils.convert(response)
   }
 

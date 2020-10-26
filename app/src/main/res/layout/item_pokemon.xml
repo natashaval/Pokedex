@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="4dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="@dimen/margin_8"
+    android:layout_marginVertical="@dimen/margin_8"
+    android:layout_marginStart="@dimen/margin_8"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,8 +16,8 @@
 
         <ImageView
             android:id="@+id/iv_sprite"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
+            android:layout_width="@dimen/pokemon_size"
+            android:layout_height="@dimen/pokemon_size"
             tools:src="@drawable/ic_pokeball"
             android:layout_margin="@dimen/margin_8"
             app:layout_constraintBottom_toTopOf="@id/tv_name"
@@ -26,9 +27,12 @@
 
         <TextView
             android:id="@+id/tv_name"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pokemon"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@id/iv_sprite"
             app:layout_constraintStart_toStartOf="@id/iv_sprite"
             app:layout_constraintEnd_toEndOf="@id/iv_sprite"
