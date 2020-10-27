@@ -34,15 +34,4 @@ class PokemonPagingSource @Inject constructor(private val repository: PokemonRep
       return LoadResult.Error(exception)
     }
   }
-
-  override val keyReuseSupported: Boolean = true
-
-
-  private fun buildUrl(offset: Int?, limit: Int?): String? {
-    return Uri.parse(Constant.BASE_URL).buildUpon()
-      .appendPath("pokemon")
-      .appendQueryParameter("offset", offset.toString())
-      .appendQueryParameter("limit", limit.toString())
-      .build().toString()
-  }
 }

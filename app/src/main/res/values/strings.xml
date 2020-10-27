@@ -15,6 +15,11 @@
     <!-- Fab -->
     <string name="fab_search">Search</string>
     <string name="fab_web">Open Web</string>
+    <!-- Item Menu -->
+    <string-array name="tab_item">
+        <item>Item</item>
+        <item>Berry</item>
+    </string-array>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>

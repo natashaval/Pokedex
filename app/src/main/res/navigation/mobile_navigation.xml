@@ -18,8 +18,14 @@
         tools:layout="@layout/fragment_pokemon" />
 
     <fragment
+        android:id="@+id/nav_nature"
+        android:name="com.natashaval.pokedex.ui.nature.NatureFragment"
+        android:label="@string/menu_nature"
+        tools:layout="@layout/fragment_nature" />
+
+    <fragment
         android:id="@+id/nav_item"
-        android:name="com.natashaval.pokedex.ui.item.ItemFragment"
+        android:name="com.natashaval.pokedex.ui.item.ItemTabFragment"
         android:label="@string/menu_item"
         tools:layout="@layout/fragment_item" />
 
@@ -27,10 +33,4 @@
         android:id="@+id/action_settings"
         android:name="com.natashaval.pokedex.ui.SettingsFragment"
         android:label="SettingsFragment" />
-
-    <fragment
-        android:id="@+id/nav_nature"
-        android:name="com.natashaval.pokedex.ui.nature.NatureFragment"
-        android:label="@string/menu_nature"
-        tools:layout="@layout/fragment_nature" />
 </navigation>

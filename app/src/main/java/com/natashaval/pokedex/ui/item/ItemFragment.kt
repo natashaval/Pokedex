@@ -73,4 +73,8 @@ class ItemFragment : Fragment() {
       adapter = itemAdapter
     }
   }
+
+  companion object {
+    fun newInstance() = ItemFragment()
+  }
 }
