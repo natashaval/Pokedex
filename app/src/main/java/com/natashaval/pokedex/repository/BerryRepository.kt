@@ -7,6 +7,7 @@ import com.natashaval.pokedex.api.ItemApi
 import com.natashaval.pokedex.model.MyResponse
 import com.natashaval.pokedex.model.NamedApiResource
 import com.natashaval.pokedex.model.Resource
+import com.natashaval.pokedex.model.berry.Berry
 import com.natashaval.pokedex.ui.berry.BerryPagingSource
 import com.natashaval.pokedex.ui.berry.BerryViewModel
 import com.natashaval.pokedex.utils.ResponseUtils
@@ -26,5 +27,10 @@ class BerryRepository @Inject constructor(private val itemApi: ItemApi) {
   fun getBerryPaging(): Flow<PagingData<NamedApiResource>> {
     return Pager(config = PagingConfig(pageSize = BerryViewModel.BERRY_LIMIT),
     pagingSourceFactory = { BerryPagingSource(this)}).flow
+  }
+
+  suspend fun getBerry(id: String?): MyResponse<Berry> {
+    val response = itemApi.getBerry(id)
+    return ResponseUtils.convert(response)
   }
 }

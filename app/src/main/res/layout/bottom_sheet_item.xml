@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_round_top">
+
+        <ImageView
+            android:id="@+id/iv_sprite"
+            android:layout_width="@dimen/bottom_sheet_icon_size"
+            android:layout_height="@dimen/bottom_sheet_icon_size"
+            tools:src="@drawable/ic_gamepad"
+            android:layout_margin="@dimen/margin_12"
+            app:layout_constraintStart_toEndOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Ability Urge"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="@dimen/margin_8"
+            app:layout_constraintTop_toTopOf="@id/iv_sprite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/iv_sprite"
+            app:layout_constraintBottom_toTopOf="@id/tv_group" />
+
+        <TextView
+            android:id="@+id/tv_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:text="Ability"
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintEnd_toEndOf="@id/tv_name"
+            app:layout_constraintBottom_toBottomOf="@id/iv_sprite"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/column_category" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/category"
+            app:layout_constraintBottom_toBottomOf="@id/category"
+            app:layout_constraintStart_toStartOf="@id/category"
+            app:layout_constraintEnd_toEndOf="@id/category" />
+
+        <include
+            android:id="@+id/row_1"
+            layout="@layout/item_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_16"
+            android:layout_marginVertical="@dimen/margin_16"
+            app:layout_constraintBottom_toTopOf="@id/row_2"
+            app:layout_constraintTop_toBottomOf="@id/category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <include
+            android:id="@+id/row_2"
+            layout="@layout/item_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_16"
+            app:layout_constraintTop_toBottomOf="@id/row_1"
+            app:layout_constraintStart_toStartOf="@id/row_1"
+            app:layout_constraintEnd_toEndOf="@id/row_1"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
