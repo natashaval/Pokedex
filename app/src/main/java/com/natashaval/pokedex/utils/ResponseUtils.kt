@@ -31,4 +31,9 @@ object ResponseUtils {
         .appendQueryParameter("limit", limit.toString())
         .build().toString()
   }
+
+  fun buildSpriteUrl(name: String?): String? {
+    return Uri.parse(Constant.ITEM_SPRITE_URL).buildUpon()
+        .appendPath(name).build().toString()
+  }
 }

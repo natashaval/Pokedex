@@ -1,6 +1,7 @@
 package com.natashaval.pokedex.api
 
 import com.natashaval.pokedex.model.Resource
+import com.natashaval.pokedex.model.berry.Berry
 import com.natashaval.pokedex.model.item.Item
 import retrofit2.Response
 import retrofit2.http.GET
@@ -18,5 +19,5 @@ interface ItemApi {
 
   @GET suspend fun getBerryList(@Url url: String?): Response<Resource>
 
-  @GET("berry/{id}") suspend fun getBerry(@Path("id") id: String?): Response<Item>
+  @GET("berry/{id}") suspend fun getBerry(@Path("id") id: String?): Response<Berry>
 }

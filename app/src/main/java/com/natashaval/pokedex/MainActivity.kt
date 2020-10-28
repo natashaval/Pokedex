@@ -5,22 +5,19 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.view.menu.MenuBuilder
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
-import com.leinardi.android.speeddial.SpeedDialActionItem
-import com.leinardi.android.speeddial.SpeedDialView
+import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.databinding.ActivityMainBinding
-import com.natashaval.pokedex.utils.setSafeClickListener
+import com.natashaval.pokedex.model.NamedApiResource
+import com.natashaval.pokedex.ui.item.ItemBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
-@AndroidEntryPoint class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity(), IActivityView {
 
   private lateinit var appBarConfiguration: AppBarConfiguration
   private lateinit var binding: ActivityMainBinding
@@ -88,5 +85,10 @@ import timber.log.Timber
     } else {
       super.onBackPressed()
     }
+  }
+
+  override fun openBottomSheet(namedApiResource: NamedApiResource?) {
+    ItemBottomSheet.newInstance(namedApiResource).show(supportFragmentManager,
+        ItemBottomSheet.ITEM_BOTTOM_SHEET_TAG)
   }
 }

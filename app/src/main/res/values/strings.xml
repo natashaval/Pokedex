@@ -40,4 +40,10 @@
     <string name="flavor_hate">Hate %s flavor</string>
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacinia dictum magna, sit amet porta nunc molestie sit amet. Suspendisse.</string>
+    <string name="berry_firmness">firmness</string>
+    <string name="type">type</string>
+    <string name="power">power</string>
+    <string name="size">size</string>
+    <string name="growth_time">growth time</string>
+    <string name="max_harvest">max harvest</string>
 </resources>

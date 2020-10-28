@@ -2,18 +2,19 @@
 <resources>
     <color name="colorPrimary">#2979ff</color>
     <color name="colorPrimaryDark">#004ecb</color>
-    <color name="colorAccent">#75a7ff</color>
+    <color name="colorAccent">#baffff</color>
 
     <color name="pokemonRed">#FF0000</color>
     <color name="pokemonYellow">#FFDE00</color>
 
     <color name="redPrimary">#FF1744</color>
-    <color name="redLight">#ff616f</color>
+    <color name="redLight">#ffcccb</color>
     <color name="bluePrimary">#00B0FF</color>
-    <color name="blueLight">#69e2ff</color>
+    <color name="blueLight">#c3fdff</color>
     <color name="greyLight">#eceff1</color>
+    <color name="greyDark">#607d8b</color>
 
-    <color name="blueSecondaryLight">#e3f2fd</color>
+    <color name="blueSecondaryLight">#e1f5fe</color>
     <color name="blueSecondaryDark">#4d82cb</color>
 
     <color name="white">#FFFFFF</color>
@@ -32,7 +33,7 @@
     <color name="color_fire">#F8BBD0</color>
     <color name="color_water">#B2EBF2</color>
     <color name="color_grass">#C8E6C9</color>
-    <color name="color_electric">#FFF9C4</color>
+    <color name="color_electric">#FFF59D</color>
     <color name="color_psychic">#FFCCBC</color>
     <color name="color_ice">#BBDEFB</color>
     <color name="color_dragon">#D1C4E9</color>

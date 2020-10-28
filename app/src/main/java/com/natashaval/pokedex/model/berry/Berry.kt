@@ -19,6 +19,5 @@ data class Berry(
     @SerializedName("size") val size: Int? = null,
     @SerializedName("smoothness") val smoothness: Int? = null,
     @SerializedName("soil_dryness") val soilDryness: Int? = null,
-    @SerializedName("firmness") val firmness: BerryFirmness? = null,
-    @SerializedName("flavors") val flavors: List<BerryFlavor>? = null
+    @SerializedName("firmness") val firmness: NamedApiResource? = null
 ) : Parcelable

@@ -1,5 +1,6 @@
 package com.natashaval.pokedex.ui.berry
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.databinding.FragmentItemBinding
 import com.natashaval.pokedex.utils.hideView
-import com.natashaval.pokedex.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -27,14 +27,20 @@ class BerryFragment: Fragment() {
   private val binding get() = _binding!!
   private val viewModel: BerryViewModel by viewModels()
   private lateinit var mAdapter: BerryAdapter
+  private var iActivityView: IActivityView? = null
 
   private var berryJob: Job? = null
+
+  override fun onAttach(context: Context) {
+    super.onAttach(context)
+    iActivityView = context as IActivityView
+  }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?): View? {
     _binding = FragmentItemBinding.inflate(inflater, container, false)
     mAdapter = BerryAdapter {
-      Toast.makeText(requireContext(), "Hello ${it?.name}", Toast.LENGTH_SHORT).show()
+      iActivityView?.openBottomSheet(it)
     }
     return binding.root
   }
@@ -53,6 +59,11 @@ class BerryFragment: Fragment() {
   override fun onDestroyView() {
     _binding = null
     super.onDestroyView()
+  }
+
+  override fun onDetach() {
+    iActivityView = null
+    super.onDetach()
   }
 
   private fun fetchBerryPaging() {

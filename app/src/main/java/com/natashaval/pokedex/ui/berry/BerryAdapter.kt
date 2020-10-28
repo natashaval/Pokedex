@@ -12,6 +12,7 @@ import com.natashaval.pokedex.databinding.ItemBerryBinding
 import com.natashaval.pokedex.model.NamedApiResource
 import com.natashaval.pokedex.utils.Constant
 import com.natashaval.pokedex.utils.DiffUtilCallback
+import com.natashaval.pokedex.utils.ResponseUtils.buildSpriteUrl
 import com.natashaval.pokedex.utils.setSafeClickListener
 
 /**
@@ -38,15 +39,9 @@ class BerryAdapter(private val listener:(NamedApiResource?) -> Unit) : PagingDat
     fun bind(namedApiResource: NamedApiResource?, listener: (NamedApiResource?) -> Unit?) {
       itemBinding?.run {
         tvName.text = namedApiResource?.name
-        Glide.with(view).load(buildSpriteUrl(namedApiResource?.name)).into(ivSprite)
+        Glide.with(view).load(buildSpriteUrl("${namedApiResource?.name}-berry.png")).into(ivSprite)
         root.setSafeClickListener { listener(namedApiResource) }
       }
     }
-
-    private fun buildSpriteUrl(name: String?): String? {
-      return Uri.parse(Constant.ITEM_SPRITE_URL).buildUpon()
-          .appendPath("$name-berry.png").build().toString()
-    }
-
   }
 }
