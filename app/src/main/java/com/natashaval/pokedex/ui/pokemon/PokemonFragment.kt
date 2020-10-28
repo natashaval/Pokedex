@@ -4,18 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentPokemonBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -24,7 +19,7 @@ class PokemonFragment : Fragment() {
   private var _binding: FragmentPokemonBinding? = null
   private val binding get() = _binding!!
   private val viewModel: PokemonViewModel by viewModels()
-  private val adapter = PokemonAdapter()
+  private val mAdapter = PokemonAdapter()
 
   private var pokemonJob: Job? = null
 
@@ -42,7 +37,7 @@ class PokemonFragment : Fragment() {
     with(binding) {
       rvPokemon.setHasFixedSize(true)
       rvPokemon.layoutManager = GridLayoutManager(activity, 4)
-      rvPokemon.adapter = adapter
+      rvPokemon.adapter = mAdapter
     }
   }
 
@@ -55,7 +50,7 @@ class PokemonFragment : Fragment() {
     pokemonJob?.cancel()
     pokemonJob = lifecycleScope.launch {
       viewModel.fetchPokemonPage().collectLatest {
-        adapter.submitData(it)
+        mAdapter.submitData(it)
       }
     }
   }

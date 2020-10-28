@@ -25,6 +25,6 @@ class ItemViewModel @ViewModelInject constructor(private val repository: ItemRep
   }
 
   companion object {
-    private const val ITEM_BASE_URL = "item?offset=0&limit=10"
+    private const val ITEM_BASE_URL = "item?offset=0&limit=8"
   }
 }

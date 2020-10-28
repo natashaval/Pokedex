@@ -12,6 +12,7 @@ import com.natashaval.pokedex.ui.pokemon.PokemonPagingSource
 import com.natashaval.pokedex.ui.pokemon.PokemonViewModel
 import com.natashaval.pokedex.utils.Constant
 import com.natashaval.pokedex.utils.ResponseUtils
+import com.natashaval.pokedex.utils.ResponseUtils.buildUrl
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 import javax.inject.Inject
@@ -21,23 +22,13 @@ import javax.inject.Inject
  */
 //https://www.raywenderlich.com/12244218-paging-library-for-android-with-kotlin-creating-infinite-lists
 class PokemonRepository @Inject constructor(private val pokemonApi: PokemonApi) {
-    suspend fun getPokemonList(offset: Int?, limit: Int?): MyResponse<Resource> {
-    val response = pokemonApi.getPokemonList(buildUrl(offset, limit))
+  suspend fun getPokemonList(offset: Int?, limit: Int?): MyResponse<Resource> {
+    val response = pokemonApi.getPokemonList(buildUrl("pokemon", offset, limit))
     return ResponseUtils.convert(response)
   }
 
   fun getPokemonPaging(): Flow<PagingData<NamedApiResource>> {
-    return Pager(
-      config = PagingConfig(pageSize = PokemonViewModel.POKEMON_LIMIT),
-      pagingSourceFactory = { PokemonPagingSource(this) }
-    ).flow
-  }
-
-  private fun buildUrl(offset: Int?, limit: Int?): String? {
-    return Uri.parse(Constant.BASE_URL).buildUpon()
-      .appendPath("pokemon")
-      .appendQueryParameter("offset", offset.toString())
-      .appendQueryParameter("limit", limit.toString())
-      .build().toString()
+    return Pager(config = PagingConfig(pageSize = PokemonViewModel.POKEMON_LIMIT),
+        pagingSourceFactory = { PokemonPagingSource(this) }).flow
   }
 }

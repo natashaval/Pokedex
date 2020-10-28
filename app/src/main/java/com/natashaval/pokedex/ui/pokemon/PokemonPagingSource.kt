@@ -29,9 +29,9 @@ class PokemonPagingSource @Inject constructor(private val repository: PokemonRep
         nextKey = if (response.data?.next == null) null else currentPage + 1
       )
     } catch (exception: IOException) {
-      return LoadResult.Error(exception)
+      LoadResult.Error(exception)
     } catch (exception: HttpException) {
-      return LoadResult.Error(exception)
+      LoadResult.Error(exception)
     }
   }
 }

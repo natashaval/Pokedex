@@ -2,6 +2,7 @@ package com.natashaval.pokedex.ui.item
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.natashaval.pokedex.ui.berry.BerryFragment
 
 /**
  * Created by natasha.santoso on 27/10/20.

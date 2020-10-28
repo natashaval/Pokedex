@@ -2,6 +2,7 @@ package com.natashaval.pokedex.model.berry
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.natashaval.pokedex.model.NamedApiResource
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -9,14 +10,15 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class Berry(
-    @SerializedName("id") val id: Integer? = null,
+    @SerializedName("id") val id: Int? = null,
     @SerializedName("name") val name: String? = null,
-    @SerializedName("growth_time") val growthTime: Integer? = null,
-    @SerializedName("max_harvest") val maxHarvest: Integer? = null,
-    @SerializedName("natural_gift_power") val naturalGiftPower: Integer? = null,
-    @SerializedName("size") val size: Integer? = null,
-    @SerializedName("smoothness") val smoothness: Integer? = null,
-    @SerializedName("soil_dryness") val soilDryness: Integer? = null,
+    @SerializedName("growth_time") val growthTime: Int? = null,
+    @SerializedName("max_harvest") val maxHarvest: Int? = null,
+    @SerializedName("natural_gift_power") val naturalGiftPower: Int? = null,
+    @SerializedName("natural_gift_type") val naturalGiftType: NamedApiResource? = null,
+    @SerializedName("size") val size: Int? = null,
+    @SerializedName("smoothness") val smoothness: Int? = null,
+    @SerializedName("soil_dryness") val soilDryness: Int? = null,
     @SerializedName("firmness") val firmness: BerryFirmness? = null,
     @SerializedName("flavors") val flavors: List<BerryFlavor>? = null
 ) : Parcelable

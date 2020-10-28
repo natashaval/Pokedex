@@ -15,4 +15,8 @@ interface ItemApi {
   @GET suspend fun getItemList(@Url url: String?): Response<Resource>
 
   @GET("item/{id}") suspend fun getItem(@Path("id") id: String?): Response<Item>
+
+  @GET suspend fun getBerryList(@Url url: String?): Response<Resource>
+
+  @GET("berry/{id}") suspend fun getBerry(@Path("id") id: String?): Response<Item>
 }
