@@ -23,7 +23,7 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_name"
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -18,7 +18,8 @@ class BerryPagingSource constructor(private val repository: BerryRepository) :
 
       val response = repository.getBerryList(offset, BerryViewModel.BERRY_LIMIT)
       val resource = response.data?.results
-      LoadResult.Page(resource ?: listOf(), null, if (response.data?.next == null) null else currentPage + 1)
+      LoadResult.Page(resource ?: listOf(), null,
+        if (response.data?.next == null) null else currentPage + 1)
     } catch (ex: IOException) {
       LoadResult.Error(ex)
     } catch (ex: HttpException) {

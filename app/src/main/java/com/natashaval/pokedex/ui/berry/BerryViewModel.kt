@@ -36,6 +36,6 @@ class BerryViewModel @ViewModelInject constructor(private val repository: BerryR
   }
 
   companion object {
-    const val BERRY_LIMIT = 10
+    const val BERRY_LIMIT = 20
   }
 }
