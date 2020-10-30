@@ -1,20 +1,21 @@
 package com.natashaval.pokedex.ui.item
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import com.natashaval.pokedex.databinding.FragmentItemBinding
-import com.natashaval.pokedex.model.MyResponse
-import com.natashaval.pokedex.model.Status
-import com.natashaval.pokedex.model.item.Item
+import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.utils.hideView
-import com.natashaval.pokedex.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -24,16 +25,29 @@ class ItemFragment : Fragment() {
   private val binding get() = _binding!!
   private val itemViewModel: ItemViewModel by viewModels()
   private lateinit var itemAdapter: ItemAdapter
+  private var iActivityView: IActivityView? = null
+
+  private var itemJob: Job? = null
+
+  override fun onAttach(context: Context) {
+    super.onAttach(context)
+    iActivityView = context as IActivityView
+  }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
       savedInstanceState: Bundle?): View? {
     _binding = FragmentItemBinding.inflate(inflater, container, false)
+    itemAdapter = ItemAdapter {
+      iActivityView?.openBottomSheet(it)
+    }
     return binding.root
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    getItemList()
+    fetchItemPaging()
+    binding.pbItem.hideView()
+    setReyclerView()
   }
 
   override fun onDestroyView() {
@@ -41,35 +55,19 @@ class ItemFragment : Fragment() {
     super.onDestroyView()
   }
 
-  private fun getItemList() {
-    itemViewModel.getItemList()
-    itemViewModel.itemList.observe(viewLifecycleOwner, {
-      when(it.status) {
-        Status.SUCCESS -> {
-          binding.pbItem.hideView()
-          val data = it.data
-          data?.let { itemList ->
-            Timber.d("Logging itemList: ${itemList.size}")
-            setReyclerView(itemList)
-            itemList.forEach {item ->
-              Timber.d("Logging item name: ${item.name}")
-            }
-          }
-        }
-        Status.FAILED, Status.ERROR -> {
-          binding.pbItem.hideView()
-          Timber.e("Logging itemList error!")
-        }
-        Status.LOADING -> binding.pbItem.showView()
+  private fun fetchItemPaging() {
+    itemJob?.cancel()
+    itemJob = lifecycleScope.launch {
+      itemViewModel.fetchItemPage().collectLatest {
+        itemAdapter.submitData(it)
       }
-    })
+    }
   }
 
-  private fun setReyclerView(items: List<Item>) {
-    itemAdapter = ItemAdapter(items)
+  private fun setReyclerView() {
     binding.rvItem.apply {
       setHasFixedSize(true)
-      layoutManager = LinearLayoutManager(activity)
+      layoutManager = GridLayoutManager(activity, 2)
       adapter = itemAdapter
     }
   }
