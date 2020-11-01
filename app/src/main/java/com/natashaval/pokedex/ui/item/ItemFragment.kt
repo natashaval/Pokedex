@@ -37,7 +37,7 @@ class ItemFragment : Fragment() {
       savedInstanceState: Bundle?): View? {
     _binding = FragmentItemBinding.inflate(inflater, container, false)
     itemAdapter = ItemAdapter {
-      iActivityView?.openBottomSheet(ItemBottomSheet.MODE_ITEM, it)
+      iActivityView?.openItemBottomSheet(ItemBottomSheet.MODE_ITEM, it)
     }
     return binding.root
   }
@@ -46,7 +46,7 @@ class ItemFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     fetchItemPaging()
     binding.pbLoading.hideView()
-    setReyclerView()
+    setRecyclerView()
   }
 
   override fun onDestroyView() {
@@ -63,7 +63,7 @@ class ItemFragment : Fragment() {
     }
   }
 
-  private fun setReyclerView() {
+  private fun setRecyclerView() {
     binding.rvItem.apply {
       setHasFixedSize(true)
       layoutManager = GridLayoutManager(activity, 2)

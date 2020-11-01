@@ -38,7 +38,6 @@ class ItemAdapter(private val listener: (NamedApiResource?) -> Unit) : PagingDat
     fun bind(namedApiResource: NamedApiResource?, listener: (NamedApiResource?) -> Unit) {
       itemBinding?.run {
         tvName.text = namedApiResource?.name
-//        tvDescription.text = item?.effectEntries?.get(0)?.shortEffect
         Glide.with(view).load(buildSpriteUrl("${namedApiResource?.name}.png")).into(ivSprite)
         root.setSafeClickListener { listener(namedApiResource) }
       }

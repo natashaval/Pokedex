@@ -58,4 +58,7 @@
 
     <!-- Damage -->
     <string name="damage_hint">Select a primary or/and secondary type to view damage relations</string>
+    <string name="all_types">all types</string>
+    <string name="select_primary_type">select primary type</string>
+    <string name="select_secondary_type">select secondary type</string>
 </resources>

@@ -16,9 +16,11 @@ import com.natashaval.pokedex.databinding.BottomSheetItemBinding
 import com.natashaval.pokedex.model.NamedApiResource
 import com.natashaval.pokedex.model.Status
 import com.natashaval.pokedex.ui.berry.BerryViewModel
+import com.natashaval.pokedex.utils.Constant
 import com.natashaval.pokedex.utils.ResponseUtils.buildSpriteUrl
 import com.natashaval.pokedex.utils.hideView
 import com.natashaval.pokedex.utils.showView
+import com.natashaval.pokedex.utils.withArgs
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -30,29 +32,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
   private val berryViewModel: BerryViewModel by viewModels()
   private val itemViewModel: ItemViewModel by viewModels()
-
-  private val colorMap = mapOf<String, Int>(
-      "normal" to R.color.color_normal,
-      "fighting" to R.color.color_fighting,
-      "flying" to R.color.color_flying,
-      "poison" to R.color.color_poison,
-      "ground" to R.color.color_ground,
-      "rock" to R.color.color_rock,
-      "bug" to R.color.color_bug,
-      "ghost" to R.color.color_ghost,
-      "steel" to R.color.color_steel,
-      "fire" to R.color.color_fire,
-      "water" to R.color.color_water,
-      "grass" to R.color.color_grass,
-      "electric" to R.color.color_electric,
-      "psychic" to R.color.color_psychic,
-      "ice" to R.color.color_ice,
-      "dragon" to R.color.color_dragon,
-      "dark" to R.color.color_dark,
-      "fairy" to R.color.color_fairy,
-      "unknown" to R.color.color_unknown,
-      "shadow" to R.color.color_shadow,
-  )
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -100,7 +79,7 @@ import dagger.hilt.android.AndroidEntryPoint
             category.column6.tvDetail.text = berry?.growthTime.toString()
 
             val color = ContextCompat.getColor(requireContext(),
-                colorMap[berry?.naturalGiftType?.name] ?: R.color.color_normal)
+                Constant.colorMap[berry?.naturalGiftType?.name] ?: R.color.color_normal)
             clHeader.background.colorFilter = PorterDuffColorFilter(color, PorterDuff.Mode.SRC_ATOP)
           }
         }
@@ -168,11 +147,9 @@ import dagger.hilt.android.AndroidEntryPoint
     const val MODE_ITEM = 0
     const val MODE_BERRY = 1
     const val ITEM_BOTTOM_SHEET_TAG = "itemBottomSheet"
-    fun newInstance(itemMode: Int, namedApiResource: NamedApiResource?) = ItemBottomSheet().apply {
-      arguments = Bundle().apply {
-        putInt(ITEM_MODE, itemMode)
-        putParcelable(ITEM_RES, namedApiResource)
-      }
+    fun newInstance(itemMode: Int, namedApiResource: NamedApiResource?) = ItemBottomSheet().withArgs {
+      putInt(ITEM_MODE, itemMode)
+      putParcelable(ITEM_RES, namedApiResource)
     }
   }
 }

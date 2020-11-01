@@ -28,7 +28,9 @@ class TypeRepository @Inject constructor(private val typeApi: TypeApi, private v
     return ResponseUtils.convert(response)
   }
 
-  fun getTypeDatabase(offset: Int?, limit: Int?) = performGetOperation(
+  fun getTypeDao() = typeDao.getAll()
+
+  fun saveTypeDatabase(offset: Int?, limit: Int?) = performGetOperation(
       databaseQuery = { typeDao.getAll() },
       networkCall = { getTypeList(offset, limit) },
       saveCallResult = { typeDao.insertAll(it.results!!.map { res -> EntityType(res.name!!) }) })

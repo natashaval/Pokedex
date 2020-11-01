@@ -14,6 +14,7 @@ import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.databinding.ActivityMainBinding
 import com.natashaval.pokedex.model.NamedApiResource
 import com.natashaval.pokedex.ui.item.ItemBottomSheet
+import com.natashaval.pokedex.ui.type.TypeBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity(), IActivityView {
 
   private lateinit var appBarConfiguration: AppBarConfiguration
   private lateinit var binding: ActivityMainBinding
+
+  private var typeBottomSheet: TypeBottomSheet? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -87,8 +90,15 @@ class MainActivity : AppCompatActivity(), IActivityView {
     }
   }
 
-  override fun openBottomSheet(itemMode: Int, namedApiResource: NamedApiResource?) {
+  override fun openItemBottomSheet(itemMode: Int, namedApiResource: NamedApiResource?) {
     ItemBottomSheet.newInstance(itemMode, namedApiResource).show(supportFragmentManager,
         ItemBottomSheet.ITEM_BOTTOM_SHEET_TAG)
+  }
+
+  override fun openTypeBottomSheet() {
+    if (null == typeBottomSheet) {
+      typeBottomSheet = TypeBottomSheet.newInstance()
+    }
+    typeBottomSheet?.show(supportFragmentManager, TypeBottomSheet.TYPE_BOTTOM_SHEET_TAG)
   }
 }
