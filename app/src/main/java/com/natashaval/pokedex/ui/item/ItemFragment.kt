@@ -16,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class ItemFragment : Fragment() {
@@ -38,7 +37,7 @@ class ItemFragment : Fragment() {
       savedInstanceState: Bundle?): View? {
     _binding = FragmentItemBinding.inflate(inflater, container, false)
     itemAdapter = ItemAdapter {
-      iActivityView?.openBottomSheet(it)
+      iActivityView?.openBottomSheet(ItemBottomSheet.MODE_ITEM, it)
     }
     return binding.root
   }
@@ -46,7 +45,7 @@ class ItemFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     fetchItemPaging()
-    binding.pbItem.hideView()
+    binding.pbLoading.hideView()
     setReyclerView()
   }
 

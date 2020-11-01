@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.databinding.FragmentItemBinding
+import com.natashaval.pokedex.ui.item.ItemBottomSheet
 import com.natashaval.pokedex.utils.hideView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
@@ -40,7 +41,7 @@ class BerryFragment: Fragment() {
       savedInstanceState: Bundle?): View? {
     _binding = FragmentItemBinding.inflate(inflater, container, false)
     mAdapter = BerryAdapter {
-      iActivityView?.openBottomSheet(it)
+      iActivityView?.openBottomSheet(ItemBottomSheet.MODE_BERRY, it)
     }
     return binding.root
   }
@@ -48,7 +49,7 @@ class BerryFragment: Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     fetchBerryPaging()
-    binding.pbItem.hideView()
+    binding.pbLoading.hideView()
     with (binding.rvItem) {
       setHasFixedSize(true)
       layoutManager = GridLayoutManager(activity, 3)

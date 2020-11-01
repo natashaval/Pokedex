@@ -20,6 +20,10 @@
             android:id="@+id/nav_item"
             android:icon="@drawable/ic_pill"
             android:title="@string/menu_item" />
+        <item
+            android:id="@+id/nav_type"
+            android:icon="@drawable/ic_brightness"
+            android:title="@string/menu_type" />
     </group>
 
     <group>

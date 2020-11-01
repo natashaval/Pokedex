@@ -24,6 +24,7 @@ buildscript {
         glide = "4.11.0"
         fab_speed_dial = "3.1.1"
         paging = "3.0.0-alpha07"
+        room = "2.2.5"
     }
 }
 

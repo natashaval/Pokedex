@@ -10,8 +10,9 @@
     <!-- Menu -->
     <string name="menu_home">Home</string>
     <string name="menu_pokemon">Pokemon Dex</string>
-    <string name="menu_nature">Nature Dex</string>
     <string name="menu_item">Item Dex</string>
+    <string name="menu_nature">Nature Dex</string>
+    <string name="menu_type">Type Dex</string>
     <!-- Fab -->
     <string name="fab_search">Search</string>
     <string name="fab_web">Open Web</string>
@@ -46,4 +47,15 @@
     <string name="size">size</string>
     <string name="growth_time">growth time</string>
     <string name="max_harvest">max harvest</string>
+
+    <string name="category">category</string>
+    <string name="attributes">attribute</string>
+    <string name="cost">cost</string>
+    <string name="fling_power">fling power</string>
+    <string name="fling_effect">fling effect</string>
+    <string name="effect">effect</string>
+    <string name="in_depth_effect">in-depth effect</string>
+
+    <!-- Damage -->
+    <string name="damage_hint">Select a primary or/and secondary type to view damage relations</string>
 </resources>

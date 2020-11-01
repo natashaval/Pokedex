@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(), IActivityView {
     // Passing each menu ID as a set of Ids because each
     // menu should be considered as top level destinations.
     appBarConfiguration = AppBarConfiguration(
-        setOf(R.id.nav_home, R.id.nav_pokemon, R.id.nav_nature, R.id.nav_item), drawerLayout)
+        setOf(R.id.nav_home, R.id.nav_pokemon, R.id.nav_nature, R.id.nav_item, R.id.nav_type), drawerLayout)
     setupActionBarWithNavController(navController, appBarConfiguration)
     navView.setupWithNavController(navController)
   }
@@ -87,8 +87,8 @@ class MainActivity : AppCompatActivity(), IActivityView {
     }
   }
 
-  override fun openBottomSheet(namedApiResource: NamedApiResource?) {
-    ItemBottomSheet.newInstance(namedApiResource).show(supportFragmentManager,
+  override fun openBottomSheet(itemMode: Int, namedApiResource: NamedApiResource?) {
+    ItemBottomSheet.newInstance(itemMode, namedApiResource).show(supportFragmentManager,
         ItemBottomSheet.ITEM_BOTTOM_SHEET_TAG)
   }
 }

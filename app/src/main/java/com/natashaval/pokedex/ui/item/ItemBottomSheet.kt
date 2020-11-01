@@ -2,7 +2,6 @@ package com.natashaval.pokedex.ui.item
 
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
-import android.graphics.drawable.ShapeDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -30,6 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
   private val binding get() = _binding!!
 
   private val berryViewModel: BerryViewModel by viewModels()
+  private val itemViewModel: ItemViewModel by viewModels()
 
   private val colorMap = mapOf<String, Int>(
       "normal" to R.color.color_normal,
@@ -71,7 +71,10 @@ import dagger.hilt.android.AndroidEntryPoint
     val uri = Uri.parse(res?.url)
     binding.tvName.text = res?.name
     binding.tvGroup.text = uri.pathSegments[2]
-    observeBerry(uri.pathSegments[3])
+    when (arguments?.getInt(ITEM_MODE)) {
+      MODE_BERRY -> observeBerry(uri.pathSegments[3])
+      else -> observeItem(uri.pathSegments[3])
+    }
   }
 
   private fun observeBerry(id: String?) {
@@ -110,6 +113,50 @@ import dagger.hilt.android.AndroidEntryPoint
     })
   }
 
+  private fun observeItem(id: String?) {
+    itemViewModel.getItem(id)
+    itemViewModel.item.observe(viewLifecycleOwner, {
+      when (it.status) {
+        Status.SUCCESS -> {
+          binding.pbLoading.hideView()
+          val item = it.data
+          with(binding) {
+            Glide.with(this@ItemBottomSheet).load(item?.sprites?.default).into(
+                ivSprite)
+            category.column1.tvTitle.text = getString(R.string.category)
+            category.column1.tvDetail.text = item?.category?.name
+            category.column2.tvTitle.text = getString(R.string.attributes)
+            category.column2.tvDetail.text = item?.attributes?.get(0)?.name
+            category.column3.root.hideView()
+            category.column4.tvTitle.text = getString(R.string.cost)
+            category.column4.tvDetail.text = checkNameNull(item?.cost)
+            category.column5.tvTitle.text = getString(R.string.fling_power)
+            category.column5.tvDetail.text = checkNameNull(item?.flingPower)
+            category.column6.tvTitle.text = getString(R.string.fling_effect)
+            category.column6.tvDetail.text = if (null == item?.flingEffect) "-" else item.flingEffect.name
+
+            row1.root.showView()
+            row1.tvTitle.text = getString(R.string.effect)
+            row1.tvDetail.text = item?.effectEntries?.get(0)?.shortEffect
+
+            row2.root.showView()
+            row2.tvTitle.text = getString(R.string.in_depth_effect)
+            row2.tvDetail.text = item?.effectEntries?.get(0)?.effect
+          }
+        }
+        Status.LOADING -> binding.pbLoading.showView()
+        Status.ERROR, Status.FAILED -> {
+          binding.pbLoading.hideView()
+          dismiss()
+        }
+      }
+    })
+  }
+
+  private fun checkNameNull(value: Int?): String? {
+    return value?.toString() ?: "-"
+  }
+
   override fun onDestroyView() {
     _binding = null
     super.onDestroyView()
@@ -117,9 +164,13 @@ import dagger.hilt.android.AndroidEntryPoint
 
   companion object {
     private const val ITEM_RES = "item_res"
+    private const val ITEM_MODE = "item_mode"
+    const val MODE_ITEM = 0
+    const val MODE_BERRY = 1
     const val ITEM_BOTTOM_SHEET_TAG = "itemBottomSheet"
-    fun newInstance(namedApiResource: NamedApiResource?) = ItemBottomSheet().apply {
+    fun newInstance(itemMode: Int, namedApiResource: NamedApiResource?) = ItemBottomSheet().apply {
       arguments = Bundle().apply {
+        putInt(ITEM_MODE, itemMode)
         putParcelable(ITEM_RES, namedApiResource)
       }
     }

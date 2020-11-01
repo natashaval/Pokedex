@@ -36,3 +36,7 @@ ViewPager2:
 https://developer.android.com/guide/navigation/navigation-swipe-view-2
 https://www.raywenderlich.com/8192680-viewpager2-in-android-getting-started
 https://androidwave.com/viewpager2-with-tablayout-android-example/
+
+Room local cache from retrofit:
+https://itnext.io/android-architecture-hilt-mvvm-kotlin-coroutines-live-data-room-and-retrofit-ft-8b746cab4a06
+https://proandroiddev.com/android-architecture-starring-kotlin-coroutines-jetpack-mvvm-room-paging-retrofit-and-dagger-7749b2bae5f7

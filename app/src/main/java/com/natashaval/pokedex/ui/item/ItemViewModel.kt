@@ -18,9 +18,17 @@ import kotlinx.coroutines.launch
 
 class ItemViewModel @ViewModelInject constructor(private val repository: ItemRepository)
   : ViewModel() {
+  private val _item = MutableLiveData<MyResponse<Item>>(MyResponse.loading())
+  val item: LiveData<MyResponse<Item>> get() = _item
 
   fun fetchItemPage(): Flow<PagingData<NamedApiResource>> {
     return repository.getItemPaging().cachedIn(viewModelScope)
+  }
+
+  fun getItem(id: String?) {
+    CoroutineScope(Dispatchers.IO).launch {
+      _item.postValue(repository.getItem(id))
+    }
   }
 
   companion object {

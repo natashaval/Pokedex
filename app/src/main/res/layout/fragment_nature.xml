@@ -17,7 +17,7 @@
         tools:listitem="@layout/item_nature" />
 
     <ProgressBar
-        android:id="@+id/pb_nature"
+        android:id="@+id/pb_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

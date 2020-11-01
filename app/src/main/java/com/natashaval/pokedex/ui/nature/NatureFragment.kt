@@ -79,7 +79,7 @@ import timber.log.Timber
     viewModel.natureList.observe(viewLifecycleOwner, {
       when (it.status) {
         Status.SUCCESS -> {
-          binding.pbNature.hideView()
+          binding.pbLoading.hideView()
           val data = it.data
           addToAdapter(data)
           data?.let { natureList ->
@@ -90,10 +90,10 @@ import timber.log.Timber
           }
         }
         Status.FAILED, Status.ERROR -> {
-          binding.pbNature.hideView()
+          binding.pbLoading.hideView()
           Timber.e("Logging natureList error!")
         }
-        Status.LOADING -> binding.pbNature.showView()
+        Status.LOADING -> binding.pbLoading.showView()
       }
     })
   }
