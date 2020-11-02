@@ -36,7 +36,7 @@ class TypeAdapter constructor(private val context: Context, private val typeList
 
   inner class ViewHolder internal constructor(v: View) :
       RecyclerView.ViewHolder(v) {
-    var itemBinding: ItemButtonBinding? = null
+    private var itemBinding: ItemButtonBinding? = null
 
     init {
       itemBinding = ItemButtonBinding.bind(v)
@@ -44,11 +44,11 @@ class TypeAdapter constructor(private val context: Context, private val typeList
 
     fun bind(context: Context, type: EntityType, listener: (EntityType?) -> Unit) {
       itemBinding?.run {
-        btType.text = type.name
+        btType.text = if (type.name.isNotEmpty()) type.name else "all types"
         btType.setSafeClickListener { listener(type) }
 
         val color = ContextCompat.getColor(context,
-            Constant.colorMap[type.name] ?: R.color.color_normal)
+            Constant.colorMap[type.name] ?: R.color.colorAccent)
         btType.setBackgroundColor(color)
       }
     }

@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentTypeBinding
 import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.model.Status
+import com.natashaval.pokedex.utils.Constant
 import com.natashaval.pokedex.utils.hideView
 import com.natashaval.pokedex.utils.setSafeClickListener
 import com.natashaval.pokedex.utils.showView
@@ -45,14 +47,8 @@ class TypeFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     observeType()
-    binding.clType.btPrimary.setSafeClickListener {
-      typeViewModel.setTypeMode(TypeBottomSheet.MODE_PRIMARY)
-      iActivityView?.openTypeBottomSheet()
-    }
-    binding.clType.btSecondary.setSafeClickListener {
-      typeViewModel.setTypeMode(TypeBottomSheet.MODE_SECONDARY)
-      iActivityView?.openTypeBottomSheet()
-    }
+    observeDamage()
+    observeButtonType()
   }
 
   private fun observeType() {
@@ -62,8 +58,46 @@ class TypeFragment : Fragment() {
         Status.FAILED, Status.ERROR -> binding.pbLoading.hideView()
         Status.SUCCESS -> {
           binding.pbLoading.hideView()
-          val data = it.data
-          data?.forEach { Timber.d("Logging type: ${it.name}") }
+          typeViewModel.setDamageMap(it.data)
+        }
+      }
+    })
+  }
+
+  private fun observeDamage() {
+    typeViewModel.damage.observe(viewLifecycleOwner, {map ->
+      Timber.d("Logging damage ==============")
+      for((key,value) in map) {
+        Timber.d("Logging damage key: $key value: $value")
+      }
+    })
+  }
+
+  private fun observeButtonType() {
+    typeViewModel.typePrimary.observe(viewLifecycleOwner, {
+      binding.clType.btPrimary.apply {
+        text = if (it.name.isNotEmpty()) it.name else "all types"
+        setBackgroundColor(ContextCompat.getColor(requireContext(),
+          Constant.colorMap[it.name] ?: R.color.colorPrimary))
+        setTextColor(ContextCompat.getColor(requireContext(),
+          if (it.name.isNotEmpty()) R.color.greyDark else R.color.white))
+        setSafeClickListener {
+          typeViewModel.setTypeMode(TypeBottomSheet.MODE_PRIMARY)
+          iActivityView?.openTypeBottomSheet()
+        }
+      }
+    })
+
+    typeViewModel.typeSecondary.observe(viewLifecycleOwner, {
+      binding.clType.btSecondary.apply {
+        text = if (it.name.isNotEmpty()) it.name else "all types"
+        setBackgroundColor(ContextCompat.getColor(requireContext(),
+          Constant.colorMap[it.name] ?: R.color.colorPrimary))
+        setTextColor(ContextCompat.getColor(requireContext(),
+          if (it.name.isNotEmpty()) R.color.greyDark else R.color.white))
+        setSafeClickListener {
+          typeViewModel.setTypeMode(TypeBottomSheet.MODE_SECONDARY)
+          iActivityView?.openTypeBottomSheet()
         }
       }
     })
