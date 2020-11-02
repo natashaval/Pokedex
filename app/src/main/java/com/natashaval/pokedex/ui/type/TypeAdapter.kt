@@ -14,6 +14,7 @@ import com.natashaval.pokedex.database.entity.EntityType
 import com.natashaval.pokedex.databinding.ItemButtonBinding
 import com.natashaval.pokedex.utils.Constant
 import com.natashaval.pokedex.utils.setSafeClickListener
+import timber.log.Timber
 
 /**
  * Created by natasha.santoso on 01/11/20.
@@ -35,7 +36,6 @@ class TypeAdapter constructor(private val context: Context, private val typeList
 
   inner class ViewHolder internal constructor(v: View) :
       RecyclerView.ViewHolder(v) {
-    private val view = v
     var itemBinding: ItemButtonBinding? = null
 
     init {

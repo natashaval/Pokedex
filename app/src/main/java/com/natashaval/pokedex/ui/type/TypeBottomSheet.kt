@@ -1,5 +1,6 @@
 package com.natashaval.pokedex.ui.type
 
+import android.app.Dialog
 import android.os.Bundle
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,9 +10,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.BottomSheetTypeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 /**
  *
@@ -54,6 +57,7 @@ import dagger.hilt.android.AndroidEntryPoint
     typeViewModel.typeList.observe(viewLifecycleOwner, {
       if (it.isNotEmpty()) {
         with(binding.rvType) {
+          setHasFixedSize(true)
           layoutManager = GridLayoutManager(activity, 2)
           adapter = TypeAdapter(requireContext(), it) { type ->
             Toast.makeText(activity, "${type?.name}", Toast.LENGTH_SHORT).show()

@@ -40,6 +40,6 @@
     <color name="color_dragon">#D1C4E9</color>
     <color name="color_dark">#CFD8DC</color>
     <color name="color_fairy">#C5CAE9</color>
-    <color name="color_shadow">#ECEFF1</color>
-    <color name="color_unknown">#EEEEEE</color>
+    <color name="color_shadow">#B0BEC5</color>
+    <color name="color_unknown">#BDBDBD</color>
 </resources>

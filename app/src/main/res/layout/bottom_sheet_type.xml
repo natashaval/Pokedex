@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="@dimen/margin_32">
 
     <TextView
         android:id="@+id/tv_select"
@@ -15,22 +16,12 @@
         android:text="select type"
         android:textAlignment="center" />
 
-    <ScrollView
-        android:id="@+id/sv_scroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/margin_32">
+        android:background="@color/white"
+        tools:listitem="@layout/item_button"
+        android:paddingBottom="@dimen/margin_16"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                tools:listitem="@layout/item_button" />
-        </LinearLayout>
-    </ScrollView>
 </LinearLayout>

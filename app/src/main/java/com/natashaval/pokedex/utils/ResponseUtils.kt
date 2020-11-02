@@ -18,9 +18,9 @@ object ResponseUtils {
         Timber.e("Logging response failed: ${response.errorBody()}")
         MyResponse.failed(response.errorBody().toString())
       }
-    } catch (t: Throwable) {
-      Timber.e("Logging response error: ${t.message}")
-      MyResponse.error(null, t.message)
+    } catch (e: Exception) {
+      Timber.e("Logging response error: ${e.message}")
+      MyResponse.error(null, e.message)
     }
   }
 
