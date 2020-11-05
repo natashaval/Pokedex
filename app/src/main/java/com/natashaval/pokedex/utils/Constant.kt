@@ -33,5 +33,28 @@ class Constant {
         "unknown" to R.color.color_unknown,
         "shadow" to R.color.color_shadow,
     )
+
+  val iconMap = mapOf<String, Int>(
+      "normal" to R.drawable.ic_dots_horizontal,
+      "fighting" to R.drawable.ic_fighting,
+      "flying" to R.drawable.ic_bee,
+      "poison" to R.drawable.ic_poison,
+      "ground" to R.drawable.ic_shovel,
+      "rock" to R.drawable.ic_rock,
+      "bug" to R.drawable.ic_ladybug,
+      "ghost" to R.drawable.ic_ghost,
+      "steel" to R.drawable.ic_settings,
+      "fire" to R.drawable.ic_fire,
+      "water" to R.drawable.ic_water,
+      "grass" to R.drawable.ic_leaf,
+      "electric" to R.drawable.ic_flash,
+      "psychic" to R.drawable.ic_psychic,
+      "ice" to R.drawable.ic_cube_outline,
+      "dragon" to R.drawable.ic_dragon,
+      "dark" to R.drawable.ic_square_rounded,
+      "fairy" to R.drawable.ic_magic_wand,
+      "unknown" to R.drawable.ic_help_circle,
+      "shadow" to R.drawable.ic_blur,
+  )
   }
 }

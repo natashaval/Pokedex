@@ -72,18 +72,18 @@ class TypeFragment : Fragment() {
       val weak = map.filterValues { it > 1.0 }
       binding.clDamage.clWeak.tvDamage.text = getString(R.string.weak_against)
       for((key,value) in weak) {
-        binding.clDamage.clWeak.cgDamage.addChip("$key  x$value")
+        binding.clDamage.clWeak.cgDamage.addChip(key, value)
       }
       val resistant = map.filterValues { it < 1.0 }
       binding.clDamage.clResistant.tvDamage.text = getString(R.string.resistant_against)
       for((key,value) in resistant) {
-        binding.clDamage.clResistant.cgDamage.addChip("$key  x$value")
+        binding.clDamage.clResistant.cgDamage.addChip(key, value)
       }
       val normal = map.filterValues { it == 1.0 }
       binding.clDamage.clNormal.tvDamage.text = getString(R.string.normal_damage_from)
       for((key,value) in normal) {
         if (key.isNotEmpty()) {
-          binding.clDamage.clNormal.cgDamage.addChip("$key  x$value")
+          binding.clDamage.clNormal.cgDamage.addChip(key, value)
         }
       }
     })
@@ -103,10 +103,10 @@ class TypeFragment : Fragment() {
         }
       }
       if (it.name.isEmpty() && typeViewModel.typeSecondary.value?.name?.isEmpty().orFalse()) {
-        binding.clDamage.groupDamage.hideView()
+        binding.clDamage.svDamage.hideView()
         binding.clDamage.tvDamageHint.showView()
       } else {
-        binding.clDamage.groupDamage.showView()
+        binding.clDamage.svDamage.showView()
         binding.clDamage.tvDamageHint.hideView()
       }
     })
@@ -124,10 +124,10 @@ class TypeFragment : Fragment() {
         }
       }
       if (it.name.isEmpty() && typeViewModel.typePrimary.value?.name?.isEmpty().orFalse()) {
-        binding.clDamage.groupDamage.hideView()
+        binding.clDamage.svDamage.hideView()
         binding.clDamage.tvDamageHint.showView()
       } else {
-        binding.clDamage.groupDamage.showView()
+        binding.clDamage.svDamage.showView()
         binding.clDamage.tvDamageHint.hideView()
       }
     })
@@ -143,12 +143,12 @@ class TypeFragment : Fragment() {
     super.onDetach()
   }
 
-  private fun ChipGroup.addChip(label: String) {
+  private fun ChipGroup.addChip(name: String, value: Double) {
     Chip(requireContext()).apply {
-      text = label
+      text = "$name  $value"
       chipIcon = ContextCompat.getDrawable(
         requireContext(),
-        Constant.iconMap[label] ?: R.drawable.ic_pokeball
+        Constant.iconMap[name] ?: R.drawable.ic_pokeball
       )
       addView(this)
     }

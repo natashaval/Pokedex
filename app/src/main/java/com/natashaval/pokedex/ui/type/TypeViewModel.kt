@@ -99,11 +99,13 @@ class TypeViewModel @ViewModelInject constructor(private val repository: TypeRep
         for (key in damagePrimaryMap.keys) {
           damagePrimaryMap[key] = 1.0
         }
+        countDamageMap()
       }
       MODE_SECONDARY -> {
         for (key in damageSecondaryMap.keys) {
           damageSecondaryMap[key] = 1.0
         }
+        countDamageMap()
       }
     }
   }
