@@ -40,33 +40,26 @@ class TypeViewModel @ViewModelInject constructor(private val repository: TypeRep
 
   fun setTypePrimary(type: EntityType?) {
     _typePrimary.value = type
-    if (type?.name?.isNotEmpty().orFalse()) {
-      CoroutineScope(Dispatchers.IO).launch {
-        val response = repository.getType(type?.name)
-        if (response.status == Status.SUCCESS) {
-          countDamage(response.data?.damageRelations)
-        }
+    CoroutineScope(Dispatchers.IO).launch {
+      val response = repository.getType(type?.name)
+      if (response.status == Status.SUCCESS) {
+        countDamage(response.data?.damageRelations)
       }
-    } else {
-      resetMap()
     }
   }
 
   fun setTypeSecondary(type: EntityType?) {
     _typeSecondary.value = type
-    if (type?.name?.isNotEmpty().orFalse()) {
-      CoroutineScope(Dispatchers.IO).launch {
-        val response = repository.getType(type?.name)
-        if (response.status == Status.SUCCESS) {
-          countDamage(response.data?.damageRelations)
-        }
+    CoroutineScope(Dispatchers.IO).launch {
+      val response = repository.getType(type?.name)
+      if (response.status == Status.SUCCESS) {
+        countDamage(response.data?.damageRelations)
       }
-    } else {
-      resetMap()
     }
   }
 
   private fun countDamage(damageRelations: DamageRelations?) {
+    resetMap()
     damageRelations?.doubleDamageFrom?.forEach {
       insertMapValue(it.name.orEmpty(), 2.0)
     }
@@ -99,13 +92,11 @@ class TypeViewModel @ViewModelInject constructor(private val repository: TypeRep
         for (key in damagePrimaryMap.keys) {
           damagePrimaryMap[key] = 1.0
         }
-        countDamageMap()
       }
       MODE_SECONDARY -> {
         for (key in damageSecondaryMap.keys) {
           damageSecondaryMap[key] = 1.0
         }
-        countDamageMap()
       }
     }
   }

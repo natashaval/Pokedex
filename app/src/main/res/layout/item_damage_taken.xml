@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/tv_damage"
-        style="@style/TextAppearance.MaterialComponents.Subtitle2"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/normal_damage_from"
