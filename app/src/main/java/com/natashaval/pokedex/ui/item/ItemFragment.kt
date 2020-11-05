@@ -66,7 +66,7 @@ class ItemFragment : Fragment() {
   private fun setRecyclerView() {
     binding.rvItem.apply {
       setHasFixedSize(true)
-      layoutManager = GridLayoutManager(activity, 2)
+      layoutManager = GridLayoutManager(activity, 3)
       adapter = itemAdapter
     }
   }

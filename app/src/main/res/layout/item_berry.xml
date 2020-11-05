@@ -17,12 +17,12 @@
             style="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="cheeri"
             android:layout_marginHorizontal="@dimen/margin_8"
-            app:layout_constraintTop_toTopOf="@id/iv_sprite"
-            app:layout_constraintBottom_toBottomOf="@id/iv_sprite"
+            android:text="master-ball"
+            app:layout_constraintBottom_toBottomOf="@id/iv_background"
+            app:layout_constraintEnd_toStartOf="@id/iv_background"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/iv_background" />
+            app:layout_constraintTop_toTopOf="@id/iv_background" />
 
         <ImageView
             android:id="@+id/iv_background"

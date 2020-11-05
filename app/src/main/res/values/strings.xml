@@ -61,4 +61,7 @@
     <string name="all_types">all types</string>
     <string name="select_primary_type">select primary type</string>
     <string name="select_secondary_type">select secondary type</string>
+    <string name="weak_against">weak against</string>
+    <string name="resistant_against">resistant against</string>
+    <string name="normal_damage_from">normal damage from</string>
 </resources>

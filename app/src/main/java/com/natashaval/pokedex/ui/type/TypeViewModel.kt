@@ -11,6 +11,7 @@ import com.natashaval.pokedex.model.type.DamageRelations
 import com.natashaval.pokedex.repository.TypeRepository
 import com.natashaval.pokedex.ui.type.TypeBottomSheet.Companion.MODE_PRIMARY
 import com.natashaval.pokedex.ui.type.TypeBottomSheet.Companion.MODE_SECONDARY
+import com.natashaval.pokedex.utils.orFalse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,21 +40,29 @@ class TypeViewModel @ViewModelInject constructor(private val repository: TypeRep
 
   fun setTypePrimary(type: EntityType?) {
     _typePrimary.value = type
-    CoroutineScope(Dispatchers.IO).launch {
-      val response = repository.getType(type?.name)
-      if (response.status == Status.SUCCESS) {
-        countDamage(response.data?.damageRelations)
+    if (type?.name?.isNotEmpty().orFalse()) {
+      CoroutineScope(Dispatchers.IO).launch {
+        val response = repository.getType(type?.name)
+        if (response.status == Status.SUCCESS) {
+          countDamage(response.data?.damageRelations)
+        }
       }
+    } else {
+      resetMap()
     }
   }
 
   fun setTypeSecondary(type: EntityType?) {
     _typeSecondary.value = type
-    CoroutineScope(Dispatchers.IO).launch {
-      val response = repository.getType(type?.name)
-      if (response.status == Status.SUCCESS) {
-        countDamage(response.data?.damageRelations)
+    if (type?.name?.isNotEmpty().orFalse()) {
+      CoroutineScope(Dispatchers.IO).launch {
+        val response = repository.getType(type?.name)
+        if (response.status == Status.SUCCESS) {
+          countDamage(response.data?.damageRelations)
+        }
       }
+    } else {
+      resetMap()
     }
   }
 
@@ -78,10 +87,25 @@ class TypeViewModel @ViewModelInject constructor(private val repository: TypeRep
   }
 
   private fun countDamageMap() {
-    for ((key,value) in damageTotalMap) {
+    for (key in damageTotalMap.keys) {
       damageTotalMap[key] = (damagePrimaryMap[key] ?: 1.0).times(damageSecondaryMap[key] ?: 1.0)
     }
     _damage.postValue(damageTotalMap)
+  }
+
+  private fun resetMap() {
+    when (typeMode.value) {
+      MODE_PRIMARY -> {
+        for (key in damagePrimaryMap.keys) {
+          damagePrimaryMap[key] = 1.0
+        }
+      }
+      MODE_SECONDARY -> {
+        for (key in damageSecondaryMap.keys) {
+          damageSecondaryMap[key] = 1.0
+        }
+      }
+    }
   }
 
   val types: LiveData<MyResponse<List<EntityType>>> = repository.saveTypeDatabase(TYPE_OFFSET,

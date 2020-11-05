@@ -10,15 +10,15 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentTypeBinding
 import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.model.Status
-import com.natashaval.pokedex.utils.Constant
-import com.natashaval.pokedex.utils.hideView
-import com.natashaval.pokedex.utils.setSafeClickListener
-import com.natashaval.pokedex.utils.showView
+import com.natashaval.pokedex.utils.*
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_type.view.*
 import timber.log.Timber
 
 @AndroidEntryPoint
@@ -65,10 +65,26 @@ class TypeFragment : Fragment() {
   }
 
   private fun observeDamage() {
-    typeViewModel.damage.observe(viewLifecycleOwner, {map ->
-      Timber.d("Logging damage ==============")
-      for((key,value) in map) {
-        Timber.d("Logging damage key: $key value: $value")
+    typeViewModel.damage.observe(viewLifecycleOwner, { map ->
+      binding.clDamage.clWeak.cgDamage.removeAllViews()
+      binding.clDamage.clResistant.cgDamage.removeAllViews()
+      binding.clDamage.clNormal.cgDamage.removeAllViews()
+      val weak = map.filterValues { it > 1.0 }
+      binding.clDamage.clWeak.tvDamage.text = getString(R.string.weak_against)
+      for((key,value) in weak) {
+        binding.clDamage.clWeak.cgDamage.addChip("$key  x$value")
+      }
+      val resistant = map.filterValues { it < 1.0 }
+      binding.clDamage.clResistant.tvDamage.text = getString(R.string.resistant_against)
+      for((key,value) in resistant) {
+        binding.clDamage.clResistant.cgDamage.addChip("$key  x$value")
+      }
+      val normal = map.filterValues { it == 1.0 }
+      binding.clDamage.clNormal.tvDamage.text = getString(R.string.normal_damage_from)
+      for((key,value) in normal) {
+        if (key.isNotEmpty()) {
+          binding.clDamage.clNormal.cgDamage.addChip("$key  x$value")
+        }
       }
     })
   }
@@ -86,6 +102,13 @@ class TypeFragment : Fragment() {
           iActivityView?.openTypeBottomSheet()
         }
       }
+      if (it.name.isEmpty() && typeViewModel.typeSecondary.value?.name?.isEmpty().orFalse()) {
+        binding.clDamage.groupDamage.hideView()
+        binding.clDamage.tvDamageHint.showView()
+      } else {
+        binding.clDamage.groupDamage.showView()
+        binding.clDamage.tvDamageHint.hideView()
+      }
     })
 
     typeViewModel.typeSecondary.observe(viewLifecycleOwner, {
@@ -100,6 +123,13 @@ class TypeFragment : Fragment() {
           iActivityView?.openTypeBottomSheet()
         }
       }
+      if (it.name.isEmpty() && typeViewModel.typePrimary.value?.name?.isEmpty().orFalse()) {
+        binding.clDamage.groupDamage.hideView()
+        binding.clDamage.tvDamageHint.showView()
+      } else {
+        binding.clDamage.groupDamage.showView()
+        binding.clDamage.tvDamageHint.hideView()
+      }
     })
   }
 
@@ -113,4 +143,14 @@ class TypeFragment : Fragment() {
     super.onDetach()
   }
 
+  private fun ChipGroup.addChip(label: String) {
+    Chip(requireContext()).apply {
+      text = label
+      chipIcon = ContextCompat.getDrawable(
+        requireContext(),
+        Constant.iconMap[label] ?: R.drawable.ic_pokeball
+      )
+      addView(this)
+    }
+  }
 }

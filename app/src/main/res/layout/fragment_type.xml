@@ -30,8 +30,9 @@
         android:id="@+id/cl_damage"
         layout="@layout/layout_damage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_damage"
         app:layout_constraintStart_toStartOf="@id/cl_type"
         app:layout_constraintEnd_toEndOf="@id/cl_type" />

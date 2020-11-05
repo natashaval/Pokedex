@@ -29,3 +29,5 @@ inline fun <T: Fragment> T.withArgs(
 ): T = this.apply {
   arguments = Bundle().apply(argsBuilder)
 }
+
+fun Boolean?.orFalse() = this ?: false
