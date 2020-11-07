@@ -2,7 +2,6 @@ package com.natashaval.pokedex.utils
 
 import android.net.Uri
 import com.natashaval.pokedex.model.MyResponse
-import com.natashaval.pokedex.utils.Constant.Companion.ITEM_SPRITE_URL
 import retrofit2.Response
 import timber.log.Timber
 
@@ -25,7 +24,7 @@ object ResponseUtils {
   }
 
   fun buildUrl(path: String, offset: Int?, limit: Int?): String? {
-    return Uri.parse(Constant.BASE_URL).buildUpon()
+    return Uri.parse(Constant.BASE_POKEAPI_URL).buildUpon()
         .appendPath(path)
         .appendQueryParameter("offset", offset.toString())
         .appendQueryParameter("limit", limit.toString())

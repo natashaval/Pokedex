@@ -9,7 +9,6 @@ import com.natashaval.pokedex.model.MyResponse
 import com.natashaval.pokedex.model.Resource
 import com.natashaval.pokedex.model.nature.Nature
 import com.natashaval.pokedex.repository.NatureRepository
-import com.natashaval.pokedex.utils.Constant.Companion.BASE_URL
 import com.natashaval.pokedex.utils.ResponseUtils.buildUrl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

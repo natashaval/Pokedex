@@ -18,19 +18,19 @@ import javax.inject.Singleton
 @InstallIn(ActivityRetainedComponent::class)
 class ApiModule {
   @Provides
-  fun provideItemApi(retrofit: Retrofit): ItemApi {
+  fun provideItemApi(@PokeapiUrl retrofit: Retrofit): ItemApi {
     return retrofit.create(ItemApi::class.java)
   }
   @Provides
-  fun provideNatureApi(retrofit: Retrofit): NatureApi {
+  fun provideNatureApi(@PokeapiUrl retrofit: Retrofit): NatureApi {
     return retrofit.create(NatureApi::class.java)
   }
   @Provides
-  fun providePokemonApi(retrofit: Retrofit): PokemonApi {
+  fun providePokemonApi(@PokeapiUrl retrofit: Retrofit): PokemonApi {
     return retrofit.create(PokemonApi::class.java)
   }
   @Provides
-  fun provideTypeApi(retrofit: Retrofit): TypeApi {
+  fun provideTypeApi(@PokeapiUrl retrofit: Retrofit): TypeApi {
     return retrofit.create(TypeApi::class.java)
   }
 }

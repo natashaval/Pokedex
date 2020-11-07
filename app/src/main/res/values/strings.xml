@@ -64,4 +64,7 @@
     <string name="weak_against">weak against</string>
     <string name="resistant_against">resistant against</string>
     <string name="normal_damage_from">normal damage from</string>
+
+    <!-- Affirmation -->
+    <string name="get_affirmation">get me affirmation!</string>
 </resources>
