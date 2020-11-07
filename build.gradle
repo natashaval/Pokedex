@@ -25,7 +25,9 @@ buildscript {
         fab_speed_dial = "3.1.1"
         paging = "3.0.0-alpha07"
         room = "2.2.5"
+        // Wear OS
         wearable = "2.7.0"
+        play_services_wearable = "17.0.0"
     }
 }
 

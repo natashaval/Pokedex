@@ -8,6 +8,7 @@
 - [x] Retrofit
 - [x] Hilt Dependency Injection
 - [x] Room
+- [] Wear OS
 
 ### Navigation Components
 - [x] Androidx Navigation
@@ -41,3 +42,13 @@ https://androidwave.com/viewpager2-with-tablayout-android-example/
 ##### Room local cache from retrofit:
 https://itnext.io/android-architecture-hilt-mvvm-kotlin-coroutines-live-data-room-and-retrofit-ft-8b746cab4a06
 https://proandroiddev.com/android-architecture-starring-kotlin-coroutines-jetpack-mvvm-room-paging-retrofit-and-dagger-7749b2bae5f7
+
+##### Wear OS:
+adb -d forward tcp:5601 tcp:5601
+https://developer.android.com/training/wearables/apps/creating
+https://www.raywenderlich.com/254-getting-started-with-android-wear-with-kotlin#toc-anchor-019
+https://www.dashdevs.com/blog/wear-os-app-development-tutorial-p2/
+https://infinum.com/the-capsized-eight/make-your-app-work-with-android-wear-in-4-easy-steps
+https://medium.com/rosberryapps/wear-os-application-development-practical-aspects-a761019f7ec4
+https://medium.com/mindorks/a-beginner-guide-to-android-watch-app-wear-2-0-71b27a802d11
+https://www.codeproject.com/Articles/1040547/Android-Wear-Notification
