@@ -1,4 +1,4 @@
-package com.natashaval.wear
+package com.natashaval.pokedex
 
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity

@@ -1,8 +1,11 @@
 package com.natashaval.pokedex.ui.affirmation
 
 import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Vibrator
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -72,11 +75,13 @@ import dagger.hilt.android.AndroidEntryPoint
     val id = "affirmation_channel"
 
     val notificationBuilder = NotificationCompat.Builder(requireContext(), id)
-        .setSmallIcon(R.drawable.ic_hand_heart)
-        .setContentTitle(getString(R.string.affirmation_today))
-        .setContentText(message)
-        .extend(wearableExtender)
-        .build()
+      .setSmallIcon(R.drawable.ic_hand_heart)
+      .setContentTitle(getString(R.string.affirmation_today))
+      .setContentText(message)
+      .setVibrate(longArrayOf(1000, 1000, 1000))
+      .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+      .extend(wearableExtender)
+      .build()
 
     notificationManager?.notify(notificationId, notificationBuilder)
   }

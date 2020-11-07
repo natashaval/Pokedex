@@ -52,3 +52,5 @@ https://infinum.com/the-capsized-eight/make-your-app-work-with-android-wear-in-4
 https://medium.com/rosberryapps/wear-os-application-development-practical-aspects-a761019f7ec4
 https://medium.com/mindorks/a-beginner-guide-to-android-watch-app-wear-2-0-71b27a802d11
 https://www.codeproject.com/Articles/1040547/Android-Wear-Notification
+https://www.programmableweb.com/news/how-to-develop-android-wear-application/how-to/2014/10/17
+https://www.codeproject.com/Articles/1040547/Android-Wear-Notification

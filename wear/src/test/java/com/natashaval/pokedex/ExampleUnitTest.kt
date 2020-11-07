@@ -1,4 +1,4 @@
-package com.natashaval.wear
+package com.natashaval.pokedex
 
 import org.junit.Test
 
