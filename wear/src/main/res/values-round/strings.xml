@@ -1,3 +1,4 @@
 <resources>
     <string name="hello_world">Hello Round World!</string>
+    <string name="affirmation_today">Affirmation Today</string>
 </resources>

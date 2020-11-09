@@ -22,15 +22,18 @@ import com.natashaval.pokedex.utils.setSafeClickListener
 import com.natashaval.pokedex.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint class AffirmationFragment : Fragment() {
+@AndroidEntryPoint
+class AffirmationFragment : Fragment() {
 
   companion object {
     fun newInstance() = AffirmationFragment()
+    const val CHANNEL_ID = "affirmation_channel"
   }
 
   private var _binding: FragmentAffirmationBinding? = null
   private val binding get() = _binding!!
   private val viewModel: AffirmationViewModel by viewModels()
+  private var affirmation: String? = null
 
   private var notificationManager: NotificationManagerCompat? = null
   private var wearableExtender: NotificationCompat.WearableExtender? = null
@@ -52,8 +55,9 @@ import dagger.hilt.android.AndroidEntryPoint
       when (it.status) {
         Status.SUCCESS -> {
           binding.pbLoading.hideView()
-          binding.tvAffirmation.text = it.data?.affirmation
-          createNotification(it.data?.affirmation)
+          this.affirmation = it.data?.affirmation
+          binding.tvAffirmation.text = this.affirmation
+          createNotification(this.affirmation)
         }
         Status.LOADING -> binding.pbLoading.showView()
         Status.ERROR, Status.FAILED -> {
@@ -72,9 +76,8 @@ import dagger.hilt.android.AndroidEntryPoint
   //  https://developer.android.com/training/wearables/notifications/creating#kotlin
   private fun createNotification(message: String?) {
     val notificationId = 1
-    val id = "affirmation_channel"
 
-    val notificationBuilder = NotificationCompat.Builder(requireContext(), id)
+    val notificationBuilder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
       .setSmallIcon(R.drawable.ic_hand_heart)
       .setContentTitle(getString(R.string.affirmation_today))
       .setContentText(message)
