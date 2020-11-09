@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_pokedex_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.affirmation.AffirmationActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

@@ -1,10 +1,8 @@
 package com.natashaval.pokedex.ui.affirmation
 
-import android.app.NotificationManager
-import android.content.Context
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
-import android.os.Vibrator
 import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,7 +11,6 @@ import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.viewModels
-import com.natashaval.pokedex.MainActivity
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentAffirmationBinding
 import com.natashaval.pokedex.model.Status
@@ -33,7 +30,6 @@ class AffirmationFragment : Fragment() {
   private var _binding: FragmentAffirmationBinding? = null
   private val binding get() = _binding!!
   private val viewModel: AffirmationViewModel by viewModels()
-  private var affirmation: String? = null
 
   private var notificationManager: NotificationManagerCompat? = null
   private var wearableExtender: NotificationCompat.WearableExtender? = null
@@ -55,9 +51,8 @@ class AffirmationFragment : Fragment() {
       when (it.status) {
         Status.SUCCESS -> {
           binding.pbLoading.hideView()
-          this.affirmation = it.data?.affirmation
-          binding.tvAffirmation.text = this.affirmation
-          createNotification(this.affirmation)
+          binding.tvAffirmation.text = it.data?.affirmation
+          createNotification(it.data?.affirmation)
         }
         Status.LOADING -> binding.pbLoading.showView()
         Status.ERROR, Status.FAILED -> {
@@ -77,15 +72,25 @@ class AffirmationFragment : Fragment() {
   private fun createNotification(message: String?) {
     val notificationId = 1
 
-    val notificationBuilder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
-      .setSmallIcon(R.drawable.ic_hand_heart)
-      .setContentTitle(getString(R.string.affirmation_today))
-      .setContentText(message)
-      .setVibrate(longArrayOf(1000, 1000, 1000))
-      .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
-      .extend(wearableExtender)
-      .build()
+    context?.let { ctx ->
+      // to open certain Activity after clicking notification
+      val viewPendingIntent = Intent(ctx, AffirmationActivity::class.java)
+          .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP).let { viewIntent ->
+        viewIntent.putExtra(AffirmationActivity.AFFIRMATION_BUNDLE, message)
+        PendingIntent.getActivity(ctx, 0, viewIntent, 0)
+      }
 
-    notificationManager?.notify(notificationId, notificationBuilder)
+      val notificationBuilder = NotificationCompat.Builder(ctx, CHANNEL_ID)
+          .setSmallIcon(R.drawable.ic_hand_heart)
+          .setContentTitle(getString(R.string.affirmation_today))
+          .setContentText(message)
+          .setContentIntent(viewPendingIntent)
+          .setVibrate(longArrayOf(1000, 1000, 1000))
+          .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+          .extend(wearableExtender)
+          .build()
+
+      notificationManager?.notify(notificationId, notificationBuilder)
+    }
   }
 }
