@@ -69,4 +69,10 @@
     <string name="get_affirmation">get me affirmation!</string>
     <string name="affirmation_error">Sorry, no affirmation available today!</string>
     <string name="affirmation_today">Affirmation today</string>
+    <string name="affirmation_reply">Thank you!</string>
+    <string-array name="affirmation_choice">
+        <item>Yes</item>
+        <item>No</item>
+        <item>Maybe</item>
+    </string-array>
 </resources>
