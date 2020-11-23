@@ -2,6 +2,7 @@ package com.natashaval.pokedex.wear
 
 import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
+import android.util.Log
 import com.google.android.gms.wearable.*
 import com.natashaval.base.model.DATA_KEY
 import com.natashaval.pokedex.R
@@ -31,17 +32,21 @@ class WearActivity : WearableActivity(), DataClient.OnDataChangedListener {
     Wearable.getDataClient(this).removeListener(this)
   }
 
+//  https://developer.android.com/training/wearables/data-layer/events
   override fun onDataChanged(dataEvents: DataEventBuffer) {
     dataEvents.forEach { event ->
       if (event.type == DataEvent.TYPE_CHANGED) {
+        Log.d("WearActivity", "Data item changed: " + event.dataItem.uri)
         event.dataItem.also {item ->
-          if (item.uri.path?.equals("/affirmation") == true) {
+          if (item.uri.path?.compareTo("/affirmation") == 0) {
             DataMapItem.fromDataItem(item).dataMap.apply {
               binding.tvAffirmation.text = getString(DATA_KEY)
             }
           }
         }
+
       } else if (event.type == DataEvent.TYPE_DELETED) {
+        Log.d("WearActivity", "Data item deleted: " + event.dataItem.uri)
         binding.tvAffirmation.text = getString(R.string.affirmation_error)
       }
     }
