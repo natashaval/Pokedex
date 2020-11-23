@@ -17,9 +17,7 @@ import androidx.fragment.app.viewModels
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentAffirmationBinding
 import com.natashaval.pokedex.model.Status
-import com.natashaval.pokedex.utils.hideView
-import com.natashaval.pokedex.utils.setSafeClickListener
-import com.natashaval.pokedex.utils.showView
+import com.natashaval.pokedex.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -152,6 +150,11 @@ class AffirmationFragment : Fragment() {
           PendingIntent.getActivity(ctx, 0, viewIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         }
 
+      val openBlibliIntent = Intent(Intent.ACTION_VIEW).let { intent ->
+        intent.data = Uri.parse("https://www.blibli.com")
+        PendingIntent.getActivity(ctx, 0, intent, 0)
+      }
+
       val remoteInput = RemoteInput.Builder(AffirmationActivity.EXTRA_REPLY)
         .setLabel(getString(R.string.affirmation_reply))
         .setChoices(ctx.resources.getStringArray(R.array.affirmation_choice))
@@ -165,9 +168,9 @@ class AffirmationFragment : Fragment() {
 
       val notificationBuilder = NotificationCompat.Builder(ctx, CHANNEL_ID)
         .setSmallIcon(R.drawable.ic_hand_heart)
-        .setContentTitle(getString(R.string.affirmation_today))
+        .setContentTitle("Reply: " + getString(R.string.affirmation_today))
         .setContentText(message)
-        .setVibrate(longArrayOf(1000, 1000, 1000))
+        .setVibrate(longArrayOf(1000, 500, 500))
         .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
         .extend(NotificationCompat.WearableExtender().addAction(action))
         .build()

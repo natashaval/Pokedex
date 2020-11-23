@@ -44,4 +44,5 @@ dependencies {
 
     implementation "com.google.android.support:wearable:$wearable"
     compileOnly "com.google.android.wearable:wearable:$wearable"
+    implementation "com.google.android.gms:play-services-wearable:$play_services_wearable"
 }

@@ -47,6 +47,7 @@ https://proandroiddev.com/android-architecture-starring-kotlin-coroutines-jetpac
 adb -d forward tcp:5601 tcp:5601
 https://developer.android.com/training/wearables/apps/creating
 https://www.raywenderlich.com/254-getting-started-with-android-wear-with-kotlin#toc-anchor-019
+https://code.tutsplus.com/tutorials/get-wear-os-and-android-talking-exchanging-information-via-the-wearable-data-layer--cms-30986
 https://www.dashdevs.com/blog/wear-os-app-development-tutorial-p2/
 https://infinum.com/the-capsized-eight/make-your-app-work-with-android-wear-in-4-easy-steps
 https://medium.com/rosberryapps/wear-os-application-development-practical-aspects-a761019f7ec4

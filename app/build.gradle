@@ -91,4 +91,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$room"
     implementation "androidx.room:room-ktx:$room"
     testImplementation "androidx.room:room-testing:$room"
+
+    // WearOS
+    implementation "com.google.android.gms:play-services-wearable:$play_services_wearable"
+
 }

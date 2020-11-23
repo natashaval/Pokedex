@@ -6,4 +6,5 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="affirmation_today">Affirmation Today</string>
+    <string name="affirmation_error">Sorry, no affirmation available today!</string>
 </resources>
