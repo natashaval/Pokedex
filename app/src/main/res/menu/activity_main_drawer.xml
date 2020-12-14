@@ -26,6 +26,15 @@
             android:title="@string/menu_type" />
     </group>
 
+    <item android:title="@string/love">
+        <menu>
+            <item
+                android:id="@+id/nav_affirmation"
+                android:icon="@drawable/ic_hand_heart"
+                android:title="@string/menu_affirmation" />
+        </menu>
+    </item>
+
     <group>
         <item
             android:id="@+id/action_settings"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Affirmation</string>
     <!-- Affirmation -->
     <string name="get_affirmation">get me affirmation!</string>
     <string name="affirmation_error">Sorry, no affirmation available today!</string>

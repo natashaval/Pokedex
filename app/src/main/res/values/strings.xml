@@ -13,6 +13,9 @@
     <string name="menu_item">Item Dex</string>
     <string name="menu_nature">Nature Dex</string>
     <string name="menu_type">Type Dex</string>
+
+    <string name="menu_affirmation">Affirmation</string>
+    <string name="love">Love</string>
     <!-- Fab -->
     <string name="fab_search">Search</string>
     <string name="fab_web">Open Web</string>

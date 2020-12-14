@@ -10,6 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
+import com.natashaval.base.router.RouterConstant
+import com.natashaval.base.router.RouterUtils
 import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.databinding.ActivityMainBinding
 import com.natashaval.pokedex.model.NamedApiResource
@@ -42,6 +44,18 @@ class MainActivity : AppCompatActivity(), IActivityView {
         setOf(R.id.nav_home, R.id.nav_pokemon, R.id.nav_nature, R.id.nav_item, R.id.nav_type), drawerLayout)
     setupActionBarWithNavController(navController, appBarConfiguration)
     navView.setupWithNavController(navController)
+
+    navView.setNavigationItemSelectedListener {item ->
+      when (item.itemId) {
+        R.id.nav_affirmation -> {
+          RouterUtils.route(this@MainActivity, RouterConstant.SAMPLE_URL)
+          true
+        }
+        else -> {
+          false
+        }
+      }
+    }
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {

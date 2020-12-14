@@ -49,6 +49,6 @@ dependencies {
     // UI
     implementation "com.jakewharton.rxbinding4:rxbinding:$rxbinding"
     api "androidx.constraintlayout:constraintlayout:$constraintlayout"
-    implementation 'com.google.android.material:material:1.2.1'
+    api "com.google.android.material:material:$material"
     implementation "androidx.recyclerview:recyclerview:$recyclerview"
 }
