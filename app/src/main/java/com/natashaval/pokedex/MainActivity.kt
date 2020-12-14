@@ -44,18 +44,6 @@ class MainActivity : AppCompatActivity(), IActivityView {
         setOf(R.id.nav_home, R.id.nav_pokemon, R.id.nav_nature, R.id.nav_item, R.id.nav_type), drawerLayout)
     setupActionBarWithNavController(navController, appBarConfiguration)
     navView.setupWithNavController(navController)
-
-    navView.setNavigationItemSelectedListener {item ->
-      when (item.itemId) {
-        R.id.nav_affirmation -> {
-          RouterUtils.route(this@MainActivity, RouterConstant.SAMPLE_URL)
-          true
-        }
-        else -> {
-          false
-        }
-      }
-    }
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -71,6 +59,11 @@ class MainActivity : AppCompatActivity(), IActivityView {
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     val navController = findNavController(R.id.nav_host_fragment)
+    when(item.itemId) {
+      R.id.nav_sample -> {
+        RouterUtils.route(this@MainActivity, RouterConstant.SAMPLE_URL)
+      }
+    }
     return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
   }
 
