@@ -1,6 +1,5 @@
 package com.natashaval.pokedex.ui.berry
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,9 @@ import com.bumptech.glide.Glide
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.ItemBerryBinding
 import com.natashaval.pokedex.model.NamedApiResource
-import com.natashaval.pokedex.utils.Constant
 import com.natashaval.pokedex.utils.DiffUtilCallback
-import com.natashaval.pokedex.utils.ResponseUtils.buildSpriteUrl
-import com.natashaval.pokedex.utils.setSafeClickListener
+import com.natashaval.base.utils.setSafeClickListener
+import com.natashaval.pokedex.utils.PokemonUtils.buildSpriteUrl
 
 /**
  * Created by natasha.santoso on 28/10/20.

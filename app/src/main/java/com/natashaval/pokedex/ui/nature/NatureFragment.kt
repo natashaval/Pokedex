@@ -8,13 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentNatureBinding
-import com.natashaval.pokedex.model.Status
+import com.natashaval.base.model.Status
 import com.natashaval.pokedex.model.nature.Nature
 import com.natashaval.pokedex.ui.adapter.PaginationListener
-import com.natashaval.pokedex.utils.hideView
-import com.natashaval.pokedex.utils.showView
+import com.natashaval.base.utils.hideView
+import com.natashaval.base.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 

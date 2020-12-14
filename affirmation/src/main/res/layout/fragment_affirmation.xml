@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.natashaval.affirmation.ui.AffirmationFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.1"
+        android:orientation="horizontal" />
+
+    <Button
+        android:id="@+id/bt_affirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_affirmation"
+        app:layout_constraintEnd_toEndOf="@id/tv_affirmation"
+        app:layout_constraintStart_toStartOf="@id/tv_affirmation"
+        app:layout_constraintTop_toTopOf="@id/guideline" />
+
+    <Button
+        android:id="@+id/bt_big_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Big text notification!"
+        android:layout_margin="@dimen/margin_8"
+        app:layout_constraintEnd_toEndOf="@id/tv_affirmation"
+        app:layout_constraintStart_toStartOf="@id/tv_affirmation"
+        app:layout_constraintTop_toBottomOf="@id/bt_affirmation" />
+
+    <Button
+        android:id="@+id/bt_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reply notification!"
+        android:layout_margin="@dimen/margin_8"
+        app:layout_constraintEnd_toEndOf="@id/tv_affirmation"
+        app:layout_constraintStart_toStartOf="@id/tv_affirmation"
+        app:layout_constraintTop_toBottomOf="@id/bt_big_text" />
+
+    <TextView
+        android:id="@+id/tv_affirmation"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/margin_32"
+        tools:text="@string/damage_hint"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

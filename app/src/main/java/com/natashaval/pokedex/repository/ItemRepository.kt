@@ -5,16 +5,15 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.natashaval.pokedex.api.ItemApi
-import com.natashaval.pokedex.model.MyResponse
+import com.natashaval.base.model.MyResponse
 import com.natashaval.pokedex.model.NamedApiResource
 import com.natashaval.pokedex.model.Resource
 import com.natashaval.pokedex.model.item.Item
 import com.natashaval.pokedex.ui.item.ItemPagingSource
 import com.natashaval.pokedex.ui.item.ItemViewModel
-import com.natashaval.pokedex.utils.ResponseUtils
-import com.natashaval.pokedex.utils.ResponseUtils.buildUrl
+import com.natashaval.base.utils.ResponseUtils
+import com.natashaval.pokedex.utils.PokemonUtils.buildUrl
 import kotlinx.coroutines.flow.Flow
-import timber.log.Timber
 import javax.inject.Inject
 
 /**

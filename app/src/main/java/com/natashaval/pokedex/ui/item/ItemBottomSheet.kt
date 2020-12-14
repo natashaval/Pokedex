@@ -14,13 +14,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.BottomSheetItemBinding
 import com.natashaval.pokedex.model.NamedApiResource
-import com.natashaval.pokedex.model.Status
+import com.natashaval.base.model.Status
 import com.natashaval.pokedex.ui.berry.BerryViewModel
 import com.natashaval.pokedex.utils.Constant
-import com.natashaval.pokedex.utils.ResponseUtils.buildSpriteUrl
-import com.natashaval.pokedex.utils.hideView
-import com.natashaval.pokedex.utils.showView
-import com.natashaval.pokedex.utils.withArgs
+import com.natashaval.base.utils.hideView
+import com.natashaval.base.utils.showView
+import com.natashaval.base.utils.withArgs
+import com.natashaval.pokedex.utils.PokemonUtils.buildSpriteUrl
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

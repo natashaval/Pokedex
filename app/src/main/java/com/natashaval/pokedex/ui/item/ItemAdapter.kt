@@ -9,10 +9,9 @@ import com.bumptech.glide.Glide
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.ItemBerryBinding
 import com.natashaval.pokedex.model.NamedApiResource
-import com.natashaval.pokedex.model.item.Item
 import com.natashaval.pokedex.utils.DiffUtilCallback
-import com.natashaval.pokedex.utils.ResponseUtils.buildSpriteUrl
-import com.natashaval.pokedex.utils.setSafeClickListener
+import com.natashaval.base.utils.setSafeClickListener
+import com.natashaval.pokedex.utils.PokemonUtils.buildSpriteUrl
 
 /**
  * Created by natasha.santoso on 20/10/20.

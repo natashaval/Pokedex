@@ -1,10 +1,10 @@
 package com.natashaval.pokedex.repository
 
 import com.natashaval.pokedex.api.NatureApi
-import com.natashaval.pokedex.model.MyResponse
+import com.natashaval.base.model.MyResponse
 import com.natashaval.pokedex.model.Resource
 import com.natashaval.pokedex.model.nature.Nature
-import com.natashaval.pokedex.utils.ResponseUtils
+import com.natashaval.base.utils.ResponseUtils
 import javax.inject.Inject
 
 /**

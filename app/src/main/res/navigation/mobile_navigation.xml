@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.natashaval.pokedex.ui.affirmation.AffirmationFragment"
+        android:name="com.natashaval.affirmation.ui.AffirmationFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 

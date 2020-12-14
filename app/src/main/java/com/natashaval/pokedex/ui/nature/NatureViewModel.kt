@@ -5,11 +5,11 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.natashaval.pokedex.model.MyResponse
+import com.natashaval.base.model.MyResponse
 import com.natashaval.pokedex.model.Resource
 import com.natashaval.pokedex.model.nature.Nature
 import com.natashaval.pokedex.repository.NatureRepository
-import com.natashaval.pokedex.utils.ResponseUtils.buildUrl
+import com.natashaval.pokedex.utils.PokemonUtils.buildUrl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

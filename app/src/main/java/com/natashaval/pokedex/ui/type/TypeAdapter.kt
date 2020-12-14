@@ -1,20 +1,16 @@
 package com.natashaval.pokedex.ui.type
 
 import android.content.Context
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.database.entity.EntityType
 import com.natashaval.pokedex.databinding.ItemButtonBinding
 import com.natashaval.pokedex.utils.Constant
-import com.natashaval.pokedex.utils.setSafeClickListener
-import timber.log.Timber
+import com.natashaval.base.utils.setSafeClickListener
 
 /**
  * Created by natasha.santoso on 01/11/20.

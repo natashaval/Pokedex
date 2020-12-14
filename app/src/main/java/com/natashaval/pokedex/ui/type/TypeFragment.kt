@@ -1,7 +1,6 @@
 package com.natashaval.pokedex.ui.type
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,17 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.natashaval.base.utils.hideView
+import com.natashaval.base.utils.orFalse
+import com.natashaval.base.utils.setSafeClickListener
+import com.natashaval.base.utils.showView
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.FragmentTypeBinding
 import com.natashaval.pokedex.interfaces.IActivityView
-import com.natashaval.pokedex.model.Status
+import com.natashaval.base.model.Status
 import com.natashaval.pokedex.utils.*
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_type.view.*
-import timber.log.Timber
 
 @AndroidEntryPoint
 class TypeFragment : Fragment() {

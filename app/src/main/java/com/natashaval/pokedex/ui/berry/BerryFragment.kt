@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.natashaval.pokedex.interfaces.IActivityView
 import com.natashaval.pokedex.databinding.FragmentItemBinding
 import com.natashaval.pokedex.ui.item.ItemBottomSheet
-import com.natashaval.pokedex.utils.hideView
+import com.natashaval.base.utils.hideView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest

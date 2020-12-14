@@ -5,13 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.natashaval.pokedex.database.entity.EntityType
-import com.natashaval.pokedex.model.MyResponse
-import com.natashaval.pokedex.model.Status
+import com.natashaval.base.model.MyResponse
+import com.natashaval.base.model.Status
 import com.natashaval.pokedex.model.type.DamageRelations
 import com.natashaval.pokedex.repository.TypeRepository
 import com.natashaval.pokedex.ui.type.TypeBottomSheet.Companion.MODE_PRIMARY
 import com.natashaval.pokedex.ui.type.TypeBottomSheet.Companion.MODE_SECONDARY
-import com.natashaval.pokedex.utils.orFalse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

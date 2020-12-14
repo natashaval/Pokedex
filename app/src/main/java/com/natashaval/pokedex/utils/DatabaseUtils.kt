@@ -3,8 +3,8 @@ package com.natashaval.pokedex.utils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import com.natashaval.pokedex.model.MyResponse
-import com.natashaval.pokedex.model.Status
+import com.natashaval.base.model.MyResponse
+import com.natashaval.base.model.Status
 import kotlinx.coroutines.Dispatchers
 
 /**

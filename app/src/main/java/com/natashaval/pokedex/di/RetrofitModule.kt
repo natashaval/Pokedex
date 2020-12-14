@@ -2,7 +2,6 @@ package com.natashaval.pokedex.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.natashaval.pokedex.utils.Constant.Companion.BASE_AFFIRMATION_URL
 import com.natashaval.pokedex.utils.Constant.Companion.BASE_POKEAPI_URL
 import dagger.Module
 import dagger.Provides
@@ -12,7 +11,6 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 /**
@@ -26,15 +24,6 @@ class RetrofitModule {
   @PokeapiUrl
   fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
     return Retrofit.Builder().baseUrl(BASE_POKEAPI_URL).client(okHttpClient).addConverterFactory(
-        GsonConverterFactory.create(gson)
-    ).build()
-  }
-
-  @Provides
-  @Singleton
-  @AffirmationUrl
-  fun provideAffirmationRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
-    return Retrofit.Builder().baseUrl(BASE_AFFIRMATION_URL).client(okHttpClient).addConverterFactory(
         GsonConverterFactory.create(gson)
     ).build()
   }

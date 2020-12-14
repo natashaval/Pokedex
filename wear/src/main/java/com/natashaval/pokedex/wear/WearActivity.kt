@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.support.wearable.activity.WearableActivity
 import android.util.Log
 import com.google.android.gms.wearable.*
-import com.natashaval.base.model.DATA_KEY
 import com.natashaval.pokedex.R
 import com.natashaval.pokedex.databinding.ActivityWearBinding
 
 class WearActivity : WearableActivity(), DataClient.OnDataChangedListener {
 
   private lateinit var binding: ActivityWearBinding
+  private val DATA_KEY = "data_key"
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = ActivityWearBinding.inflate(layoutInflater)

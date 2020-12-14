@@ -3,13 +3,12 @@ package com.natashaval.pokedex.repository
 import com.natashaval.pokedex.api.TypeApi
 import com.natashaval.pokedex.database.dao.TypeDao
 import com.natashaval.pokedex.database.entity.EntityType
-import com.natashaval.pokedex.model.MyResponse
-import com.natashaval.pokedex.model.NamedApiResource
+import com.natashaval.base.model.MyResponse
 import com.natashaval.pokedex.model.Resource
 import com.natashaval.pokedex.model.type.PokemonType
 import com.natashaval.pokedex.utils.DatabaseUtils.performGetOperation
-import com.natashaval.pokedex.utils.ResponseUtils
-import com.natashaval.pokedex.utils.ResponseUtils.buildUrl
+import com.natashaval.base.utils.ResponseUtils
+import com.natashaval.pokedex.utils.PokemonUtils.buildUrl
 import javax.inject.Inject
 
 /**

@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.natashaval.pokedex.model.MyResponse
+import com.natashaval.base.model.MyResponse
 import com.natashaval.pokedex.model.NamedApiResource
 import com.natashaval.pokedex.model.item.Item
 import com.natashaval.pokedex.repository.ItemRepository
