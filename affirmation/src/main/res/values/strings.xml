@@ -11,4 +11,7 @@
         <item>No</item>
         <item>Maybe</item>
     </string-array>
+
+    <!-- Mood -->
+    <string name="mood_how">How is your mood today?</string>
 </resources>

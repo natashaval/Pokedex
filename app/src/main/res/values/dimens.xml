@@ -8,13 +8,6 @@
 
     <dimen name="icon_size">48dp</dimen>
     <dimen name="pokemon_size">64dp</dimen>
-    <!-- Margin -->
-    <dimen name="margin_4">4dp</dimen>
-    <dimen name="margin_8">8dp</dimen>
-    <dimen name="margin_12">12dp</dimen>
-    <dimen name="margin_16">16dp</dimen>
-    <dimen name="margin_24">24dp</dimen>
-    <dimen name="margin_32">32dp</dimen>
 
     <!-- Text -->
     <dimen name="text_12">12sp</dimen>

@@ -39,14 +39,20 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":base")
+//    implementation project(":app")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // WearOS
     implementation "com.google.android.gms:play-services-wearable:$play_services_wearable"
+    implementation 'androidx.wear:wear:1.1.0'
+    compileOnly 'com.google.android.wearable:wearable:2.8.1'
 
     // Dependency Injection Hilt
     implementation "com.google.dagger:hilt-android:$hilt_plugin_version"
@@ -55,9 +61,5 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:$hilt_viewmodel"
 
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
-
-    // Wear OS
-    implementation 'androidx.wear:wear:1.1.0'
-    compileOnly 'com.google.android.wearable:wearable:2.8.1'
 
 }

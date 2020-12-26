@@ -41,7 +41,7 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
 
     implementation project(":base")
-//    implementation project(":affirmation")
+    implementation project(":affirmation")
     wearApp project(":wear")
 
     // Navigation
